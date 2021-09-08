@@ -1,5 +1,5 @@
 const institutionSbAnchor = document.createElement("a");
-const modalContent = document.getElementById("institution-modal-content");
+const modalContent = document.querySelector(".institution-modal-content");
 
 const _createHTMLNode = (element, className, node) => {
     const htmlEntity = document.createElement(element);
@@ -8,17 +8,22 @@ const _createHTMLNode = (element, className, node) => {
     return document.querySelector(`.${className}`);
 }
 
-const _insertAfter = (newNode, existingNode) => {
-    existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
-}
+const _createImgNode = ({url, className}) => {
+    const img = document.createElement("img");
+    img.src = url;
+    img.className = className;
 
+    return img;
+}
 
 function _institutionSbSetSearchBox(searchBox){
     let input = document.createElement("input");
     let search = institutionSbAnchor.cloneNode(true);
-    let searchImg = document.createElement("img");
-    searchImg.src = "../dist/assets/images/search.svg";
-    searchImg.className = "institution-search-icon";
+
+    const searchImg = _createImgNode({
+        url: "data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgMzAgMzAiIHdpZHRoPSIzMHB4IiBoZWlnaHQ9IjMwcHgiPjxwYXRoIGQ9Ik0gMTMgMyBDIDcuNDg4OTk3MSAzIDMgNy40ODg5OTcxIDMgMTMgQyAzIDE4LjUxMTAwMyA3LjQ4ODk5NzEgMjMgMTMgMjMgQyAxNS4zOTY1MDggMjMgMTcuNTk3Mzg1IDIyLjE0ODk4NiAxOS4zMjIyNjYgMjAuNzM2MzI4IEwgMjUuMjkyOTY5IDI2LjcwNzAzMSBBIDEuMDAwMSAxLjAwMDEgMCAxIDAgMjYuNzA3MDMxIDI1LjI5Mjk2OSBMIDIwLjczNjMyOCAxOS4zMjIyNjYgQyAyMi4xNDg5ODYgMTcuNTk3Mzg1IDIzIDE1LjM5NjUwOCAyMyAxMyBDIDIzIDcuNDg4OTk3MSAxOC41MTEwMDMgMyAxMyAzIHogTSAxMyA1IEMgMTcuNDMwMTIzIDUgMjEgOC41Njk4Nzc0IDIxIDEzIEMgMjEgMTcuNDMwMTIzIDE3LjQzMDEyMyAyMSAxMyAyMSBDIDguNTY5ODc3NCAyMSA1IDE3LjQzMDEyMyA1IDEzIEMgNSA4LjU2OTg3NzQgOC41Njk4Nzc0IDUgMTMgNSB6Ii8+PC9zdmc+",
+        className: "institution-search-icon"
+    });
 
     searchBox.className += "institution-search-container";
     input.className += "institution-search-input";
@@ -94,17 +99,17 @@ function _institutionSbSearchAspsp() {
 function _institutionSbSetConfig(config){    
     const close = document.querySelector(".institution-modal-close");
     close.addEventListener("click", () => {
-        window.location.href = (!config.redirect_url) ? document.URL : config.redirect_url;
+        window.location.href = (!config.redirectUrl) ? document.URL : config.redirectUrl;
     });
 }    
 
 function institutionSelector(institutions, targetNode, config={}) {
+    const institutionContentWrapper = document.querySelector(".institution-content-wrapper");
 
     _institutionSbSetConfig(config);
 
     this.instituionsLogos = institutions;
     this.root = document.getElementById(targetNode);
-    this.root.className += "institution-search-bx";
 
     // create search
     const searchDiv = document.createElement("div");
@@ -113,5 +118,16 @@ function institutionSelector(institutions, targetNode, config={}) {
     this.root.appendChild(searchNode);
 
     _createInstitutionBankList(targetNode, this.instituionsLogos);
+
+    // create logo
+    if (config.logoUrl) {
+        
+        const logoImage = _createImgNode({
+            url: config.logoUrl,
+            className: "institution-company-logo"
+        })
+
+        institutionContentWrapper.appendChild(logoImage);
+    }
 
 };

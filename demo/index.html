@@ -3,7 +3,7 @@
 		<meta charset="utf-8" />
 		<title>Nordigen Bank Selector UI </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="../dist/selector.css" rel="stylesheet" />
+		<link href="../package/selector.css" rel="stylesheet" />
 	</head>
 	<body>
 
@@ -14,99 +14,118 @@
 					<h2>Select your bank:</h2>
 				</header>
 			</div>
-			<img src="../demo/./Nordigen_Logo.png" class="institution-company-logo">
 		</div>
 	</body>
 
-	<script src="../dist/selector.js"></script>
+	<script src="../package/selector.js"></script>
 	<script>
 		// Get aspsps list from ob.nordigen.com/api/aspsps/?country=GB
 		const exampleList = [
-			{
-				id: 'RBS_GB_RBSSGBKC',
-				name: 'Royal Bank of Scotland',
-				bic: 'RBSSGBKC',
-				transaction_total_days: '730',
-				countries: ['GB'],
-				logo: 'https://g.foolcdn.com/art/companylogos/square/rbs.png'
+			 {
+				"id": "ABNAMRO_ABNAGB2LXXX",
+				"name": "ABN AMRO Bank Commercial",
+				"bic": "ABNAGB2LXXX",
+				"transaction_total_days": "540",
+				"countries": [
+					"GB"
+				],
+				"logo": "https://cdn.nordigen.com/ais/ABNAMRO_FTSBDEFAXXX.png"
 			},
 			{
-				id: 'BBVAUK_BBVAGB2L',
-				name: 'BBVA',
-				bic: 'BBVAGB2L',
-				transaction_total_days: '730',
-				countries: ['GB'],
-				logo: 'https://www.bbva.com/wp-content/uploads/2019/07/bbva-logo-nuevo-cuadrado-1024x1024.png'
+				"id": "BBVAUK_BBVAGB2L",
+				"name": "BBVA",
+				"bic": "BBVAGB2L",
+				"transaction_total_days": "730",
+				"countries": [
+					"GB"
+				],
+				"logo": "https://cdn.nordigen.com/ais/BBVABE_BBVABEBB.png"
 			},
 			{
-				id: 'HSBC_HBUKGB4B',
-				name: 'HSBC',
-				bic: 'HBUKGB4B',
-				transaction_total_days: '730',
-				countries: ['GB'],
-				logo: 'https://www.asifma.org/wp-content/uploads/2018/11/website_hsbc.png'
+				"id": "BANK_OF_SCOTLAND_BUSINESS_BOFSGBS1",
+				"name": "Bank of Scotland Business",
+				"bic": "BOFSGBS1",
+				"transaction_total_days": "90",
+				"countries": [
+					"GB"
+				],
+				"logo": "https://cdn.nordigen.com/ais/BANK_OF_SCOTLAND_BUSINESS_BOFSGBS1.png"
 			},
 			{
-				id: 'NATWEST_NWBKGB2L',
-				name: 'National Westminster Bank',
-				bic: 'NWBKGB2L',
-				transaction_total_days: '730',
-				countries: ['GB'],
-				logo: 'https://creativereview.imgix.net/content/uploads/2016/10/NW_logo_still_800px.jpg'
-			},
-						{
-				id: 'NATWEST_NWBKGB2L',
-				name: 'National Westminster Bank',
-				bic: 'NWBKGB2L',
-				transaction_total_days: '730',
-				countries: ['GB'],
-				logo: 'https://creativereview.imgix.net/content/uploads/2016/10/NW_logo_still_800px.jpg'
-			},
-						{
-				id: 'NATWEST_NWBKGB2L',
-				name: 'National Westminster Bank',
-				bic: 'NWBKGB2L',
-				transaction_total_days: '730',
-				countries: ['GB'],
-				logo: 'https://creativereview.imgix.net/content/uploads/2016/10/NW_logo_still_800px.jpg'
+				"id": "BANK_OF_SCOTLAND_COMMERCIAL_BOFSGBS1",
+				"name": "Bank of Scotland Commercial",
+				"bic": "BOFSGBS1",
+				"transaction_total_days": "90",
+				"countries": [
+					"GB"
+				],
+				"logo": "https://cdn.nordigen.com/ais/BANK_OF_SCOTLAND_BUSINESS_BOFSGBS1.png"
 			},
 			{
-				id: 'LLOYDS_LOYDGB2L',
-				name: 'Lloyds Bank Personal',
-				bic: 'LOYDGB2L',
-				transaction_total_days: '90',
-				countries: ['GB'],
-				logo: 'https://www.manorwalks.co.uk/media/1215/lloyds-bank.png'
+				"id": "BANK_OF_SCOTLAND_BOFSGBS1",
+				"name": "Bank of Scotland Personal",
+				"bic": "BOFSGBS1",
+				"transaction_total_days": "90",
+				"countries": [
+					"GB"
+				],
+				"logo": "https://cdn.nordigen.com/ais/BANK_OF_SCOTLAND_BUSINESS_BOFSGBS1.png"
 			},
 			{
-				id: 'LLOYDS_LOYDGB2L',
-				name: 'Lloyds Bank Personal',
-				bic: 'LOYDGB2L',
-				transaction_total_days: '90',
-				countries: ['GB'],
-				logo: 'https://www.manorwalks.co.uk/media/1215/lloyds-bank.png'
+				"id": "BARCLAYCARD_COMMERCIAL_BUKBGB22",
+				"name": "Barclaycard Commercial Payments",
+				"bic": "BUKBGB22",
+				"transaction_total_days": "730",
+				"countries": [
+					"GB"
+				],
+				"logo": "https://cdn.nordigen.com/ais/BARCLAYCARD_COMMERCIAL_BUKBGB22.png"
 			},
 			{
-				id: 'LLOYDS_LOYDGB2L',
-				name: 'Lloyds Bank Personal',
-				bic: 'LOYDGB2L',
-				transaction_total_days: '90',
-				countries: ['GB'],
-				logo: 'https://www.manorwalks.co.uk/media/1215/lloyds-bank.png'
+				"id": "BARCLAYCARD_BUKBGB22",
+				"name": "Barclaycard UK",
+				"bic": "BUKBGB22",
+				"transaction_total_days": "730",
+				"countries": [
+					"GB"
+				],
+				"logo": "https://cdn.nordigen.com/ais/BARCLAYCARD_COMMERCIAL_BUKBGB22.png"
 			},
-						{
-				id: 'LLOYDS_LOYDGB2L',
-				name: 'Lloyds Bank Personal',
-				bic: 'LOYDGB2L',
-				transaction_total_days: '90',
-				countries: ['GB'],
-				logo: 'https://www.manorwalks.co.uk/media/1215/lloyds-bank.png'
-			}
-
+			{
+				"id": "BARCLAYS_BUSINESS_BUKBGB22",
+				"name": "Barclays Business",
+				"bic": "BUKBGB22",
+				"transaction_total_days": "730",
+				"countries": [
+					"GB"
+				],
+				"logo": "https://cdn.nordigen.com/ais/BARCLAYS_WEALTH_BUKBGB22.png"
+			},
+			{
+				"id": "BARCLAYS_CORPORATE_BUKBGB22",
+				"name": "Barclays Corporate",
+				"bic": "BUKBGB22",
+				"transaction_total_days": "730",
+				"countries": [
+					"GB"
+				],
+				"logo": "https://cdn.nordigen.com/ais/BARCLAYS_WEALTH_BUKBGB22.png"
+			},
+			{
+				"id": "BARCLAYS_BUKBGB22",
+				"name": "Barclays Personal",
+				"bic": "BUKBGB22",
+				"transaction_total_days": "730",
+				"countries": [
+					"GB"
+				],
+				"logo": "https://cdn.nordigen.com/ais/BARCLAYS_WEALTH_BUKBGB22.png"
+			},
 		];
 
 		const config = {
-			redirect_url: 'https://www.example.com'
+			redirectUrl: 'https://www.example.com',
+			logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg'
 		};
 
 		new institutionSelector(exampleList, 'institution-modal-content', config);

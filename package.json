@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Nordigen Bank UI selector",
   "main": "dist/selector.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "module": "dist/selector.js",
+  "browser": "dist/selector.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nordigen/nordigen-bank-ui.git"
@@ -14,7 +13,12 @@
   "bugs": {
     "url": "https://github.com/nordigen/nordigen-bank-ui/issues"
   },
-  "keywords": ["aspsp", "banks", "banks ui", "nordigen", "openbanking"],
+  "keywords": [
+    "aspsp",
+    "banks ui",
+    "nordigen",
+    "openbanking"
+  ],
   "author": "Nordigen Solutions",
   "license": "MIT"
 }
