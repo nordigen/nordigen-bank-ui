@@ -1,10 +1,10 @@
 {
   "name": "nordigen-bank-ui",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "description": "Nordigen Bank UI selector",
-  "main": "dist/selector.js",
-  "module": "dist/selector.js",
-  "browser": "dist/selector.js",
+  "main": "selector.min.js",
+  "module": "selector.min.js",
+  "browser": "selector.min.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nordigen/nordigen-bank-ui.git"
@@ -19,6 +19,17 @@
     "nordigen",
     "openbanking"
   ],
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w"
+  },
   "author": "Nordigen Solutions",
-  "license": "MIT"
+  "license": "MIT",
+  "browserslist": "last 10 versions",
+  "devDependencies": {
+    "autoprefixer": "^10.3.4",
+    "rollup": "^2.56.3",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-terser": "^7.0.2"
+  }
 }

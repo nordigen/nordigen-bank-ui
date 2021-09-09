@@ -14,9 +14,9 @@ $ yarn add nordigen-bank-ui
 
 Or add package via `script` tag using CDN 
 
-* CSS: unpkg.com/nordigen-bank-ui@1.0.0/package/selector.css
+* CSS: unpkg.com/nordigen-bank-ui@1.0.0/src/selector.css
 
-* JS: unpkg.com/nordigen-bank-ui@1.0.0/package/selector.js
+* JS: unpkg.com/nordigen-bank-ui@1.0.0/src/selector.js
 ## Examples
 
 Full example can be found in a `demo` folder.
@@ -24,7 +24,7 @@ Full example can be found in a `demo` folder.
 Create `index.html`
 
 ```html
-<link href="./node_modules/nordigen-bank-ui/package/selector.css" rel="stylesheet" />
+<link href="./node_modules/nordigen-bank-ui/src/selector.min.css" rel="stylesheet" />
 
     <div class="institution-content-wrapper">
         <div id="institution-modal-content">
@@ -35,7 +35,7 @@ Create `index.html`
         </div>
     </div>
 
-<script src="./node_modules/nordigen-bank-ui/package/selector.js"></script>
+<script src="./node_modules/nordigen-bank-ui/src/selector.js"></script>
 ```
 
 Next step is to fetch aspsp list from [Nordigen API](https://nordigen.com/en/docs/account-information/overview/parameters-and-responses/#/aspsps/retrieve%20all%20supported%20ASPSP(s)%20in%20a%20given%20country)

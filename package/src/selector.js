@@ -108,16 +108,16 @@ function institutionSelector(institutions, targetNode, config={}) {
 
     _institutionSbSetConfig(config);
 
-    this.instituionsLogos = institutions;
-    this.root = document.getElementById(targetNode);
+    const instituionsLogos = institutions;
+    const root = document.getElementById(targetNode);
 
     // create search
     const searchDiv = document.createElement("div");
     const searchNode = _institutionSbSetSearchBox(searchDiv);
 
-    this.root.appendChild(searchNode);
+    root.appendChild(searchNode);
 
-    _createInstitutionBankList(targetNode, this.instituionsLogos);
+    _createInstitutionBankList(targetNode, instituionsLogos);
 
     // create logo
     if (config.logoUrl) {

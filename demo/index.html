@@ -3,7 +3,7 @@
 		<meta charset="utf-8" />
 		<title>Nordigen Bank Selector UI </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="../package/selector.css" rel="stylesheet" />
+		<link href="./node_modules/nordigen-bank-ui/src/selector.min.css" rel="stylesheet" />
 	</head>
 	<body>
 
@@ -17,7 +17,7 @@
 		</div>
 	</body>
 
-	<script src="../package/selector.js"></script>
+	<script src="./node_modules/nordigen-bank-ui/src/selector.js"></script>
 	<script>
 		// Get aspsps list from ob.nordigen.com/api/aspsps/?country=GB
 		const exampleList = [
@@ -128,6 +128,6 @@
 			logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg'
 		};
 
-		new institutionSelector(exampleList, 'institution-modal-content', config);
+		institutionSelector(exampleList, 'institution-modal-content', config);
 	</script>
 </html>
