@@ -14,9 +14,9 @@ $ yarn add nordigen-bank-ui
 
 Or add package via `script` tag using CDN 
 
-* CSS: unpkg.com/nordigen-bank-ui@1.0.0/src/selector.css
+* CSS: unpkg.com/nordigen-bank-ui@1.0.1/src/selector.min.css
 
-* JS: unpkg.com/nordigen-bank-ui@1.0.0/src/selector.js
+* JS: unpkg.com/nordigen-bank-ui@1.0.1/src/selector.js
 ## Examples
 
 Full example can be found in a `demo` folder.

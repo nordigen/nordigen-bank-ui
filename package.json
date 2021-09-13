@@ -1,10 +1,10 @@
 {
   "name": "nordigen-bank-ui",
-  "version": "1.0.8",
+  "version": "1.0.1",
   "description": "Nordigen Bank UI selector",
-  "main": "selector.min.js",
-  "module": "selector.min.js",
-  "browser": "selector.min.js",
+  "main": "src/selector.js",
+  "module": "src/selector.js",
+  "browser": "src/selector.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nordigen/nordigen-bank-ui.git"
