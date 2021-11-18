@@ -31,5 +31,8 @@
     "rollup": "^2.56.3",
     "rollup-plugin-postcss": "^4.0.1",
     "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+    "nordigen-bank-ui": "^1.0.1"
   }
 }
