@@ -40,7 +40,7 @@ body {
 
 
 .institution-search-bx-body::-webkit-scrollbar-thumb {
-  background: #AEB0B0; 
+  background: #AEB0B0;
   border-radius: 7px;
 }
 
@@ -155,7 +155,7 @@ body {
 	font-size: 1.5rem;
 	font-weight: 600;
 	color: #1B2021;
-} 
+}
 
 .list-institution:hover {
 	background-color: #F1F1F1;
@@ -213,12 +213,12 @@ img.institution-logo {
 	.list-institution span {
 		font-size: 1.9rem;
 	}
-}	
+}
 
 @media screen and (device-height: 568px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-	
+
 	html {
 		font-size: 7px;
 	}
-	
+
 }
