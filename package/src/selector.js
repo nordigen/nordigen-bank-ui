@@ -1,7 +1,20 @@
 const obInstitutionSbAnchor = document.createElement("a");
 const obInstitutionSbModalContent = document.getElementById("institution-modal-content");
+const obInstitutionSbBackArrow = document.querySelector(".left-arrow");
+const StyleEnum = {
+    FontSize: 'FontSize',
+    TextColor: 'TextColor'
+};
+includeCssFile("../node_modules/flag-icons/css/flag-icons.min.css");
+
 
 const _obInstitutionSbcreateHTMLNode = (element, className, node) => {
+    // check if node exists before creating it
+    const nodeElement = document.querySelector(`.${className}`);
+    if(nodeElement) {
+        return nodeElement;
+    }
+
     const htmlEntity = document.createElement(element);
     htmlEntity.classList.add(className);
     document.body.appendChild(htmlEntity);
@@ -12,11 +25,20 @@ const _obInstitutionSbcreateImgNode = ({url, className}) => {
     const img = document.createElement("img");
     img.src = url;
     img.className = className;
-
     return img;
 }
 
-function _institutionSbSetSearchBox(searchBox){
+const _createInstitutionContainer = () => {
+    const institutionContainer = _obInstitutionSbcreateHTMLNode(
+        'div',
+		'institution-container',
+		obInstitutionSbModalContent
+    );
+    institutionContainer.classList.add('institution-search-bx-body');
+    return institutionContainer;
+}
+
+function _institutionSbSetSearchBox(searchBox) {
     let input = document.createElement("input");
     let search = obInstitutionSbAnchor.cloneNode(true);
 
@@ -40,14 +62,19 @@ function _institutionSbSetSearchBox(searchBox){
 };
 
 
-function _createInstitutionBankList(body, institutionLogos) {
+function includeCssFile(filename) {
+    const head = document.getElementsByTagName('head')[0];
+    const style = document.createElement('link');
+    style.href = filename;
+    style.type = 'text/css';
+    style.rel = 'stylesheet';
+    head.append(style);
+}
 
-	const institutionContainer = _obInstitutionSbcreateHTMLNode(
-		'div',
-		'institution-container',
-		obInstitutionSbModalContent
-	);
-	institutionContainer.classList.add('institution-search-bx-body');
+
+function _createInstitutionBankListView(body, institutionLogos, config) {
+    _changeHeading();
+    const institutionContainer = _createInstitutionContainer();
 
 	// Set logos
 	institutionLogos.forEach((el) => {
@@ -57,6 +84,7 @@ function _createInstitutionBankList(body, institutionLogos) {
 		let institutionRow = obInstitutionSbAnchor.cloneNode(true);
         let institutionImg = document.createElement("img");
         let instituionSpan = document.createElement("span");
+        instituionSpan.className = "span-text";
         instituionSpan.innerText = el.name;
 
 		institutionList.appendChild(institutionRow);
@@ -72,14 +100,60 @@ function _createInstitutionBankList(body, institutionLogos) {
 
         institutionContainer.appendChild(institutionList);
 		institutionList.appendChild(institutionRow);
+        setOBModalStyles(config);
 	});
 
     const targetNode = document.getElementById(body);
 	targetNode.appendChild(institutionContainer);
 };
 
-function _institutionSbSearchAspsp() {
+function createCountryListView(body, institutionLogos, config) {
+    _changeHeading("Select your country");
+    const countries = _getAllUniqueCountries(institutionLogos);
+    const institutionContainer = _createInstitutionContainer();
 
+    countries.forEach((country) => {
+        const institutionList = document.createElement('div');
+        institutionList.className = 'list-institution';
+        institutionList.className += " country-list"
+
+        let institutionRow = obInstitutionSbAnchor.cloneNode(true);
+        let institutionImg = document.createElement("span");
+        let instituionSpan = document.createElement("span");
+        instituionSpan.className = "span-text";
+        instituionSpan.innerText = _getCountryFromISO(country);
+        institutionList.appendChild(institutionRow);
+
+        institutionImg.className = `fi fi-${country.toLowerCase()}`;
+        institutionRow.href = '#';
+        institutionRow.setAttribute("data-country", country)
+        institutionRow.appendChild(institutionImg);
+        institutionRow.appendChild(instituionSpan);
+
+        institutionContainer.appendChild(institutionList);
+        institutionList.appendChild(institutionRow);
+        setOBModalStyles(config);
+    });
+
+    const targetNode = document.getElementById(body);
+	targetNode.appendChild(institutionContainer);
+
+    const institutionList = document.querySelectorAll(".list-institution > a");
+
+    Array.from(institutionList).forEach((el) => el.addEventListener("click", (e) => {
+        const country = e.currentTarget.getAttribute("data-country");
+        const institutions = _filterByCountry(institutionLogos ,country);
+        _clearAllInnerNodes();
+        _createInstitutionBankListView(body, institutions, config);
+    }))
+
+    obInstitutionSbBackArrow.addEventListener("click", () => {
+        _clearAllInnerNodes();
+        createCountryListView(body, institutionLogos, config);
+    })
+}
+
+function _institutionSbSearchAspsp() {
     let input, filter, txtValue;
     input = document.querySelector(".institution-search-input");
     filter = input.value.toUpperCase();
@@ -105,27 +179,22 @@ function setOBModalStyles(config) {
 
     if(styleConfig.fontFamily) {
         const font = styleConfig.fontFamily;
-        var fontObj = new FontFace(font, `url(./fonts/${font}.ttf)`);
+        const fontObj = new FontFace(font, `url(./fonts/${font}.ttf)`);
 
         fontObj.load().then((fnt) => {
             document.fonts.add(fnt);
             document.body.style.fontFamily = font;
-
         }).catch((error) => {
             throw new Error(error);
         });
     }
 
     if(styleConfig.textColor) {
-        institutionList.map((el) => {
-            el.getElementsByTagName("span")[0].style.color = styleConfig.textColor;
-        })
+        changeTextStyles(StyleEnum.TextColor, styleConfig.textColor, institutionList);
     }
 
     if(styleConfig.fontSize) {
-        institutionList.map((el) => {
-            el.getElementsByTagName("span")[0].style.fontSize = styleConfig.fontSize;
-        })
+        changeTextStyles(StyleEnum.FontSize, styleConfig.fontSize, institutionList);
     }
 
     if(styleConfig.hoverColor) {
@@ -168,15 +237,18 @@ function institutionSelector(institutions, targetNode, config={}) {
 
     _institutionSbSetConfig(config);
 
-    const instituionsLogos = institutions;
     const root = document.getElementById(targetNode);
-
     // create search
     const searchDiv = document.createElement("div");
     const searchNode = _institutionSbSetSearchBox(searchDiv);
     root.appendChild(searchNode);
 
-    _createInstitutionBankList(targetNode, instituionsLogos);
+    if (config.countryFilter) {
+        createCountryListView(targetNode, institutions, config);
+    } else {
+        obInstitutionSbBackArrow.remove();
+        _createInstitutionBankListView(targetNode, institutions, config);
+    }
 
     // create logo
     if (config.logoUrl) {
@@ -188,5 +260,56 @@ function institutionSelector(institutions, targetNode, config={}) {
     }
 
     setOBModalStyles(config);
-
 };
+
+const changeTextStyles = (styleEnum, styleConfig, institutionList) => {
+    institutionList.map((el) => {
+        const spanElement = el.getElementsByTagName("span");
+        Array.from(spanElement).map((spanEl) => {
+            if(spanEl.classList.contains("span-text")) {
+                if(styleEnum == "FontSize") {
+                    spanEl.style.fontSize = styleConfig;
+                } else if(styleEnum == "TextColor") {
+                    spanEl.style.color = styleConfig;
+                }
+
+            }
+        })
+    })
+}
+
+const _changeHeading = (text = "Select your bank") => {
+    document.querySelector(
+        ".institution-modal-header h2"
+    ).innerHTML = text;
+}
+
+
+/** Utils **/
+
+const _getAllUniqueCountries = (institutions) => {
+    let arrCountries = [];
+    institutions.forEach((aspsp) => {
+        arrCountries.push(...aspsp.countries)
+    });
+    let uniqueCountries = [...new Set(arrCountries)];
+    return uniqueCountries;
+}
+
+const _filterByCountry = (institutions, country) => {
+    return institutions.filter((inst) => inst.countries.includes(country));
+}
+
+const _clearAllInnerNodes = () => {
+    const node = document.querySelectorAll(".list-institution");
+    if(!node) return;
+    Array.from(node).forEach((el) => {
+        el.remove();
+    })
+}
+
+const _getCountryFromISO = (country) => {
+    let languageNames = new Intl.DisplayNames(['en'], {type: 'region'});
+    return languageNames.of(country);
+}
+
