@@ -33,7 +33,6 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
-    "nordigen-bank-ui": "^1.0.1",
     "flag-icons": "^6.1.1"
   }
 }
