@@ -1,0 +1,10 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "Nordigen Bank UI Demo",
+  "author": "Nordigen Solutions",
+  "license": "ISC",
+  "dependencies": {
+    "nordigen-bank-ui": "^1.0.1"
+  }
+}
