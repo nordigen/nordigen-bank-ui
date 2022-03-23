@@ -23,6 +23,14 @@ body {
 	background-color:#F2F2F2;
 }
 
+
+.left-arrow {
+	font-size: 2.2rem;
+	color: #8d9090;
+	cursor: pointer;
+}
+
+
 .institution-content-wrapper {
 	margin: 0 auto;
 	height: 100%;
@@ -40,7 +48,7 @@ body {
 
 
 .institution-search-bx-body::-webkit-scrollbar-thumb {
-  background: #AEB0B0; 
+  background: #AEB0B0;
   border-radius: 7px;
 }
 
@@ -53,6 +61,7 @@ body {
 #institution-modal-content {
 	width: 100%;
 	max-width: 40rem;
+	min-height: 69rem;
 	background-color: #fff;
 	padding: 4.5rem;
 	display: flex;
@@ -149,19 +158,30 @@ body {
 	text-decoration: none;
 }
 
+.fi {
+	font-size:2.5rem;
+}
 
-.list-institution span {
+.span-text {
 	margin-left: 1.5rem;
 	font-size: 1.5rem;
 	font-weight: 600;
 	color: #1B2021;
-} 
+}
+
 
 .list-institution:hover {
 	background-color: #F1F1F1;
 }
 
 img.institution-logo {
+	width: 100%;
+	max-width: 3.5rem;
+	height: 3.5rem;
+	border-radius: 6px;
+}
+
+img.country-logo {
 	width: 100%;
 	max-width: 3.5rem;
 	height: 3.5rem;
@@ -213,12 +233,12 @@ img.institution-logo {
 	.list-institution span {
 		font-size: 1.9rem;
 	}
-}	
+}
 
 @media screen and (device-height: 568px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-	
+
 	html {
 		font-size: 7px;
 	}
-	
+
 }
