@@ -3,9 +3,9 @@ import postcss from 'rollup-plugin-postcss';
 import autoprefixer from 'autoprefixer';
 
 export default {
-    input: './src/selector.css',
+    input: './package/src/selector.css',
     output: {
-        file: './src/selector.min.css'
+        file: './package/src/selector.min.css'
     },
     plugins: [
         postcss({
