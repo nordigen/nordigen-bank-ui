@@ -100,9 +100,9 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
 
         institutionContainer.appendChild(institutionList);
 		institutionList.appendChild(institutionRow);
-        setOBModalStyles(config);
 	});
 
+    setOBModalStyles(config);
     const targetNode = document.getElementById(body);
 	targetNode.appendChild(institutionContainer);
 };
@@ -173,11 +173,11 @@ function setOBModalStyles(config) {
     const styleConfig = config.styles;
     const institutionList = Array.from(document.querySelectorAll(".list-institution > a"));
 
-    if(styleConfig.backgroundColor) {
+    if(styleConfig?.backgroundColor) {
         obInstitutionSbModalContent.style.backgroundColor = styleConfig.backgroundColor;
     }
 
-    if(styleConfig.fontFamily) {
+    if(styleConfig?.fontFamily) {
         const font = styleConfig.fontFamily;
         const fontObj = new FontFace(font, `url(./fonts/${font}.ttf)`);
 
@@ -189,15 +189,15 @@ function setOBModalStyles(config) {
         });
     }
 
-    if(styleConfig.textColor) {
+    if(styleConfig?.textColor) {
         changeTextStyles(StyleEnum.TextColor, styleConfig.textColor, institutionList);
     }
 
-    if(styleConfig.fontSize) {
+    if(styleConfig?.fontSize) {
         changeTextStyles(StyleEnum.FontSize, styleConfig.fontSize, institutionList);
     }
 
-    if(styleConfig.hoverColor) {
+    if(styleConfig?.hoverColor) {
         const instList = Array.from(document.querySelectorAll(".list-institution"));
         const hoverState = {
             hover: (event) => {
@@ -312,4 +312,3 @@ const _getCountryFromISO = (country) => {
     let languageNames = new Intl.DisplayNames(['en'], {type: 'region'});
     return languageNames.of(country);
 }
-
