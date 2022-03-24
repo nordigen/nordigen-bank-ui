@@ -12,7 +12,7 @@ $ npm install --save nordigen-bank-ui
 $ yarn add nordigen-bank-ui
 ```
 
-Or add package via `script` tag using CDN 
+Or add package via `script` tag using CDN
 
 * CSS: https://unpkg.com/nordigen-bank-ui@1.0.1/package/src/selector.min.css
 
@@ -28,6 +28,7 @@ Create `index.html`
 
     <div class="institution-content-wrapper">
         <div id="institution-modal-content">
+            <span class="left-arrow">&#8592;</span>
             <header class="institution-modal-header ">
                 <span class="institution-modal-close">&times;</span>
                 <h2>Select your bank:</h2>
