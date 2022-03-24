@@ -5,8 +5,7 @@ const StyleEnum = {
     FontSize: 'FontSize',
     TextColor: 'TextColor'
 };
-includeCssFile("../node_modules/flag-icons/css/flag-icons.min.css");
-
+includeCssFile("https://unpkg.com/flag-icons@6.1.1/css/flag-icons.min.css");
 
 const _obInstitutionSbcreateHTMLNode = (element, className, node) => {
     // check if node exists before creating it
