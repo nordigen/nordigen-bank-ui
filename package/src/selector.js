@@ -101,7 +101,7 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
 		institutionImg.src = el.logo;
 		institutionImg.className = 'institution-logo';
 		institutionRow.className += 'institution-' + el.id;
-		institutionRow.href = `/agreements/${el.id}`;
+		institutionRow.href = el.id;
 
 		institutionRow.dataset.institution = el.id;
 		institutionRow.appendChild(institutionImg);
