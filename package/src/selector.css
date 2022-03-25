@@ -50,6 +50,7 @@ body {
 .institution-search-bx-body::-webkit-scrollbar-thumb {
   background: #AEB0B0;
   border-radius: 7px;
+  height: 3rem;
 }
 
 .institution-search-bx-body::-webkit-scrollbar {
