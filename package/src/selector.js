@@ -1,6 +1,6 @@
 const obInstitutionSbAnchor = document.createElement("a");
 const obInstitutionSbModalContent = document.getElementById("institution-modal-content");
-const obInstitutionSbBackArrow = document.querySelector(".left-arrow");
+const head = document.getElementsByTagName('head')[0];
 const StyleEnum = {
     FontSize: 'FontSize',
     TextColor: 'TextColor'
@@ -62,7 +62,6 @@ function _institutionSbSetSearchBox(searchBox) {
 
 
 function includeCssFile(filename) {
-    const head = document.getElementsByTagName('head')[0];
     const style = document.createElement('link');
     style.href = filename;
     style.type = 'text/css';
@@ -70,12 +69,24 @@ function includeCssFile(filename) {
     head.append(style);
 }
 
+function includeFont(url) {
+    // Google fonts hrefs
+    const font = new URL(url).searchParams.get('family');
+    const hrefs = ["https://fonts.googleapis.com", "https://fonts.gstatic.com", url]
+    hrefs.forEach((href) => {
+        const link = document.createElement('link');
+        link.rel = "preconnect";
+        link.href = href;
+        head.append(link);
+    });
+    const body = document.getElementsByTagName("body")[0];
+    body.style.fontFamily = `${font}, sans-serif`;
+}
 
 function _createInstitutionBankListView(body, institutionLogos, config) {
     _changeHeading();
     const institutionContainer = _createInstitutionContainer();
 
-	// Set logos
 	institutionLogos.forEach((el) => {
 		const institutionList = document.createElement('div');
 		institutionList.className = 'list-institution';
@@ -85,13 +96,12 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
         let instituionSpan = document.createElement("span");
         instituionSpan.className = "span-text";
         instituionSpan.innerText = el.name;
-
 		institutionList.appendChild(institutionRow);
 
 		institutionImg.src = el.logo;
 		institutionImg.className = 'institution-logo';
 		institutionRow.className += 'institution-' + el.id;
-		institutionRow.href = '#';
+		institutionRow.href = `/agreements/${el.id}`;
 
 		institutionRow.dataset.institution = el.id;
 		institutionRow.appendChild(institutionImg);
@@ -106,8 +116,19 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
 	targetNode.appendChild(institutionContainer);
 };
 
+function _addBackArrow() {
+    const arrow = document.querySelector(".left-arrow");
+    if(arrow) return;
+
+    const span = document.createElement('span');
+    span.className = "left-arrow";
+    span.innerHTML = "&#8592;";
+    obInstitutionSbModalContent.prepend(span);
+}
+
 function createCountryListView(body, institutionLogos, config) {
     _changeHeading("Select your country");
+    _addBackArrow();
     const countries = _getAllUniqueCountries(institutionLogos);
     const institutionContainer = _createInstitutionContainer();
 
@@ -131,8 +152,9 @@ function createCountryListView(body, institutionLogos, config) {
 
         institutionContainer.appendChild(institutionList);
         institutionList.appendChild(institutionRow);
-        setOBModalStyles(config);
     });
+
+    setOBModalStyles(config);
 
     const targetNode = document.getElementById(body);
 	targetNode.appendChild(institutionContainer);
@@ -146,6 +168,7 @@ function createCountryListView(body, institutionLogos, config) {
         _createInstitutionBankListView(body, institutions, config);
     }))
 
+    const obInstitutionSbBackArrow = document.querySelector(".left-arrow");
     obInstitutionSbBackArrow.addEventListener("click", () => {
         _clearAllInnerNodes();
         createCountryListView(body, institutionLogos, config);
@@ -177,15 +200,7 @@ function setOBModalStyles(config) {
     }
 
     if(styleConfig?.fontFamily) {
-        const font = styleConfig.fontFamily;
-        const fontObj = new FontFace(font, `url(./fonts/${font}.ttf)`);
-
-        fontObj.load().then((fnt) => {
-            document.fonts.add(fnt);
-            document.body.style.fontFamily = font;
-        }).catch((error) => {
-            throw new Error(error);
-        });
+        includeFont(styleConfig.fontFamily);
     }
 
     if(styleConfig?.textColor) {
@@ -245,7 +260,6 @@ function institutionSelector(institutions, targetNode, config={}) {
     if (config.countryFilter) {
         createCountryListView(targetNode, institutions, config);
     } else {
-        obInstitutionSbBackArrow.remove();
         _createInstitutionBankListView(targetNode, institutions, config);
     }
 
