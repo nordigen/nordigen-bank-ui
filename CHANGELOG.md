@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.3] - 2022-03-25
+
+- Load Google font via URL
+- Set agreement link
+- Update Docs
+
 ## [1.1.2] - 2022-03-24
 
 - Load flag icons package via URL

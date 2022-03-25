@@ -15,7 +15,7 @@ Pass some institution list to `institutionSelector` function.
 * `styles: {}` - custom styling parameters. Example:
 ```css
 styles: {
-    fontFamily: 'HKGrotesk-Bold',
+    fontFamily: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
     fontSize: '15',
     textColor: '#1B2021',
     backgroundColor: '#fff',
