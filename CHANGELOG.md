@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.4] - 2022-03-25
+
+- Fix agreement link
+- Increase scroll height
+
+
 ## [1.1.3] - 2022-03-25
 
 - Load Google font via URL
@@ -20,7 +26,6 @@
 
 - Add styles configs parameter
 - Add countryFilter parameter
-
 
 
 ## [1.0.0] - 2021-09-06
