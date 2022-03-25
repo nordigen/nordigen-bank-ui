@@ -95,6 +95,6 @@ new institutionSelector(exampleList, 'institution-modal-content', config);
 
 To test fully working example application, consider checking the following repositories and their corresponding examples:
 
-* [NodeJs](https://github.com/nordigen/nordigen-node)
+* [Node.js](https://github.com/nordigen/nordigen-node)
 * [Python](https://github.com/nordigen/nordigen-python)
 * [Ruby](https://github.com/nordigen/nordigen-ruby)
