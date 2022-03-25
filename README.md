@@ -28,7 +28,6 @@ Create `index.html`
 
     <div class="institution-content-wrapper">
         <div id="institution-modal-content">
-            <span class="left-arrow">&#8592;</span>
             <header class="institution-modal-header ">
                 <span class="institution-modal-close">&times;</span>
                 <h2>Select your bank:</h2>
@@ -74,12 +73,28 @@ Create `institutionSelector` instance and pass following parameters:
 * configs object
 
 ```javascript
-// Pass your redirect link after user has been authorized in aspsp
+// Pass your redirect link after user has been authorized in institution
 const config = {
     redirectUrl: 'https://www.example.com',
-	logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg'
+	logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg',
+    countryFilter: false, // will display country list with corresponding institutions. When `countryFilter` is set to `false`, only list of institutions will be shown.
+    // style configs
+    styles: {
+        // URL to google font
+        fontFamily: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
+        fontSize: '15',
+        textColor: '#1B2021',
+        backgroundColor: '#fff',
+        hoverColor: '#F1F1F1'
+    }
 };
 
 
 new institutionSelector(exampleList, 'institution-modal-content', config);
 ```
+
+To test fully working example application, consider checking the following repositories and their corresponding examples:
+
+* [NodeJs](https://github.com/nordigen/nordigen-node)
+* [Python](https://github.com/nordigen/nordigen-python)
+* [Ruby](https://github.com/nordigen/nordigen-ruby)
