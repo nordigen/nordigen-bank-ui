@@ -1,6 +1,7 @@
 const obInstitutionSbAnchor = document.createElement("a");
 const obInstitutionSbModalContent = document.getElementById("institution-modal-content");
-const head = document.getElementsByTagName('head')[0];
+const obInstitutionSbHeading = document.getElementsByTagName('head')[0];
+const obInstitutionModalHeader = document.getElementsByClassName("institution-modal-header")[0];
 const StyleEnum = {
     FontSize: 'FontSize',
     TextColor: 'TextColor'
@@ -10,9 +11,7 @@ includeCssFile("https://unpkg.com/flag-icons@6.1.1/css/flag-icons.min.css");
 const _obInstitutionSbcreateHTMLNode = (element, className, node) => {
     // check if node exists before creating it
     const nodeElement = document.querySelector(`.${className}`);
-    if(nodeElement) {
-        return nodeElement;
-    }
+    if(nodeElement) return nodeElement;
 
     const htmlEntity = document.createElement(element);
     htmlEntity.classList.add(className);
@@ -23,6 +22,7 @@ const _obInstitutionSbcreateHTMLNode = (element, className, node) => {
 const _obInstitutionSbcreateImgNode = ({url, className}) => {
     const img = document.createElement("img");
     img.src = url;
+    img.alt = "search image";
     img.className = className;
     return img;
 }
@@ -37,7 +37,7 @@ const _createInstitutionContainer = () => {
     return institutionContainer;
 }
 
-function _institutionSbSetSearchBox(searchBox) {
+function _institutionSbSetSearchBox(searchBox, config) {
     let input = document.createElement("input");
     let search = obInstitutionSbAnchor.cloneNode(true);
 
@@ -52,13 +52,13 @@ function _institutionSbSetSearchBox(searchBox) {
     // Set attributes
     search.href = "#";
     input.setAttribute("placeholder", "Search...");
-    input.setAttribute("onkeyup", "_institutionSbSearchAspsp()");
+    input.setAttribute("onkeyup", "_institutionSbSearchAspsp(config)");
 
     searchBox.appendChild(searchImg);
     searchBox.appendChild(input);
-
     return searchBox;
 };
+
 
 
 function includeCssFile(filename) {
@@ -66,7 +66,7 @@ function includeCssFile(filename) {
     style.href = filename;
     style.type = 'text/css';
     style.rel = 'stylesheet';
-    head.append(style);
+    obInstitutionSbHeading.append(style);
 }
 
 function includeFont(url) {
@@ -77,19 +77,22 @@ function includeFont(url) {
         const link = document.createElement('link');
         link.rel = "preconnect";
         link.href = href;
-        head.append(link);
+        obInstitutionSbHeading.append(link);
     });
     const body = document.getElementsByTagName("body")[0];
     body.style.fontFamily = `${font}, sans-serif`;
 }
 
 function _createInstitutionBankListView(body, institutionLogos, config) {
+    if(config.countryFilter) _addBackArrow({visible: true});
     _changeHeading();
+    _clearSearchFormInput();
     const institutionContainer = _createInstitutionContainer();
 
 	institutionLogos.forEach((el) => {
 		const institutionList = document.createElement('div');
-		institutionList.className = 'list-institution';
+		institutionList.className = "institution-ob ";
+        institutionList.className += "list-institution";
 
 		let institutionRow = obInstitutionSbAnchor.cloneNode(true);
         let institutionImg = document.createElement("img");
@@ -99,8 +102,8 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
 		institutionList.appendChild(institutionRow);
 
 		institutionImg.src = el.logo;
-		institutionImg.className = 'institution-logo';
-		institutionRow.className += 'institution-' + el.id;
+		institutionImg.className = "institution-logo";
+		institutionRow.className += `institution-${el.id}`;
 		institutionRow.href = el.id;
 
 		institutionRow.dataset.institution = el.id;
@@ -114,27 +117,18 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
     setOBModalStyles(config);
     const targetNode = document.getElementById(body);
 	targetNode.appendChild(institutionContainer);
+
 };
-
-function _addBackArrow() {
-    const arrow = document.querySelector(".left-arrow");
-    if(arrow) return;
-
-    const span = document.createElement('span');
-    span.className = "left-arrow";
-    span.innerHTML = "&#8592;";
-    obInstitutionSbModalContent.prepend(span);
-}
 
 function createCountryListView(body, institutionLogos, config) {
     _changeHeading("Select your country");
-    _addBackArrow();
+    const arrow = _addBackArrow({visible: false});
     const countries = _getAllUniqueCountries(institutionLogos);
     const institutionContainer = _createInstitutionContainer();
 
     countries.forEach((country) => {
-        const institutionList = document.createElement('div');
-        institutionList.className = 'list-institution';
+        const institutionList = document.createElement("div");
+        institutionList.className = "institution-ob";
         institutionList.className += " country-list"
 
         let institutionRow = obInstitutionSbAnchor.cloneNode(true);
@@ -145,7 +139,7 @@ function createCountryListView(body, institutionLogos, config) {
         institutionList.appendChild(institutionRow);
 
         institutionImg.className = `fi fi-${country.toLowerCase()}`;
-        institutionRow.href = '#';
+        institutionRow.href = "#";
         institutionRow.setAttribute("data-country", country)
         institutionRow.appendChild(institutionImg);
         institutionRow.appendChild(instituionSpan);
@@ -159,7 +153,7 @@ function createCountryListView(body, institutionLogos, config) {
     const targetNode = document.getElementById(body);
 	targetNode.appendChild(institutionContainer);
 
-    const institutionList = document.querySelectorAll(".list-institution > a");
+    const institutionList = document.querySelectorAll(".institution-ob > a");
 
     Array.from(institutionList).forEach((el) => el.addEventListener("click", (e) => {
         const country = e.currentTarget.getAttribute("data-country");
@@ -168,35 +162,51 @@ function createCountryListView(body, institutionLogos, config) {
         _createInstitutionBankListView(body, institutions, config);
     }))
 
-    const obInstitutionSbBackArrow = document.querySelector(".left-arrow");
-    obInstitutionSbBackArrow.addEventListener("click", () => {
+    arrow.addEventListener("click", () => {
         _clearAllInnerNodes();
         createCountryListView(body, institutionLogos, config);
+        arrow.style.display = "none";
+        _clearSearchFormInput();
     })
 }
 
-function _institutionSbSearchAspsp() {
-    let input, filter, txtValue;
-    input = document.querySelector(".institution-search-input");
-    filter = input.value.toUpperCase();
-    const institutionList = document.querySelectorAll(".list-institution");
+function _institutionSbSearchAspsp(config) {
+    const isCountryFilterActive = config.countryFilter;
+    const input = document.querySelector(".institution-search-input");
+    const filter = input.value.toUpperCase();
+    const institutionList = document.querySelectorAll(".institution-ob");
+    const countryList = document.querySelectorAll(".country-list > a");
 
-    for (let i = 0; i < institutionList.length; i++) {
-        txtValue = institutionList[i].textContent || i.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            institutionList[i].style.display = "";
-        } else {
-            institutionList[i].style.display = "none";
-        }
+    if(isCountryFilterActive && countryList.length > 0) {
+        institutionList.forEach((cn) => {
+            const country = cn.textContent.toUpperCase();
+            const countryIso = cn.getElementsByTagName("a")[0].getAttribute("data-country");
+            if (country.indexOf(filter) > -1 || countryIso.toUpperCase().indexOf(filter) > -1) {
+                cn.style.display = "";
+            } else {
+                cn.style.display = "none";
+            }
+        })
+
+    } else {
+        institutionList.forEach((inst) => {
+            const institution = inst.textContent;
+            if (institution.toUpperCase().indexOf(filter) > -1) {
+                inst.style.display = "";
+            } else {
+                inst.style.display = "none";
+            }
+        })
     }
 }
 
+
 function setOBModalStyles(config) {
     const styleConfig = config.styles;
-    const institutionList = Array.from(document.querySelectorAll(".list-institution > a"));
+    const institutionList = Array.from(document.querySelectorAll(".institution-ob > a"));
 
     if(styleConfig?.backgroundColor) {
-        obInstitutionSbModalContent.style.backgroundColor = styleConfig.backgroundColor;
+        obInstitutionSbModalContent.style.backgroundColor = config.backgroundColor;
     }
 
     if(styleConfig?.fontFamily) {
@@ -212,30 +222,15 @@ function setOBModalStyles(config) {
     }
 
     if(styleConfig?.hoverColor) {
-        const instList = Array.from(document.querySelectorAll(".list-institution"));
-        const hoverState = {
-            hover: (event) => {
-                if(event.target.tagName === "DIV") {
-                    event.target.style.backgroundColor = styleConfig.hoverColor;
-                }
-            },
-            out: (event) => {
-              event.target.style.backgroundColor = "transparent";
-            }
-        }
-
-        instList.map((el) => {
-            el.addEventListener("mouseover", hoverState.hover, false);
-            el.addEventListener("mouseout", hoverState.out, false);
-        })
+        _setOBHoverColor(styleConfig);
     }
-
 }
 
 function _institutionSbSetConfig(config){
-    const close = document.querySelector(".institution-modal-close");
+    const redirect = config.redirectUrl;
+    const close = _createCloseIcon();
     close.addEventListener("click", () => {
-        window.location.href = (!config.redirectUrl) ? document.URL : config.redirectUrl;
+        window.location.href = (!redirect) ? document.URL : redirect;
     });
 }
 
@@ -254,7 +249,7 @@ function institutionSelector(institutions, targetNode, config={}) {
     const root = document.getElementById(targetNode);
     // create search
     const searchDiv = document.createElement("div");
-    const searchNode = _institutionSbSetSearchBox(searchDiv);
+    const searchNode = _institutionSbSetSearchBox(searchDiv, config);
     root.appendChild(searchNode);
 
     if (config.countryFilter) {
@@ -275,6 +270,23 @@ function institutionSelector(institutions, targetNode, config={}) {
     setOBModalStyles(config);
 };
 
+const _setOBHoverColor = (config) => {
+    const instList = Array.from(document.querySelectorAll(".institution-ob"));
+    const hoverState = {
+        hover: (event) => {
+            event.currentTarget.style.backgroundColor = config.hoverColor;
+        },
+        out: (event) => {
+          event.currentTarget.style.backgroundColor = "transparent";
+        }
+    }
+
+    instList.map((el) => {
+        el.addEventListener("mouseover", hoverState.hover, false);
+        el.addEventListener("mouseout", hoverState.out, false);
+    })
+}
+
 const changeTextStyles = (styleEnum, styleConfig, institutionList) => {
     institutionList.map((el) => {
         const spanElement = el.getElementsByTagName("span");
@@ -285,11 +297,11 @@ const changeTextStyles = (styleEnum, styleConfig, institutionList) => {
                 } else if(styleEnum == "TextColor") {
                     spanEl.style.color = styleConfig;
                 }
-
             }
         })
     })
 }
+
 
 const _changeHeading = (text = "Select your bank") => {
     document.querySelector(
@@ -297,6 +309,48 @@ const _changeHeading = (text = "Select your bank") => {
     ).innerHTML = text;
 }
 
+
+const _clearSearchFormInput = () => {
+    const input = document.querySelector(".institution-search-input");
+    if(input.value.length > 0) {
+        input.value = "";
+    }
+}
+
+const _addBackArrow = ({visible}) => {
+    const arrow = document.querySelector(".institution-arrow-block ");
+    if(arrow) {
+        arrow.style.display = "flex";
+        return arrow;
+    }
+
+    const arrowDiv = document.createElement("div");
+    arrowDiv.className = "institution-arrow-block ";
+
+    const img = document.createElement("img");
+    img.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgNTEyIj48IS0tIEZvbnQgQXdlc29tZSBQcm8gNS4xNS40IGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIC0tPjxwYXRoIGQ9Ik0zNC41MiAyMzkuMDNMMjI4Ljg3IDQ0LjY5YzkuMzctOS4zNyAyNC41Ny05LjM3IDMzLjk0IDBsMjIuNjcgMjIuNjdjOS4zNiA5LjM2IDkuMzcgMjQuNTIuMDQgMzMuOUwxMzEuNDkgMjU2bDE1NC4wMiAxNTQuNzVjOS4zNCA5LjM4IDkuMzIgMjQuNTQtLjA0IDMzLjlsLTIyLjY3IDIyLjY3Yy05LjM3IDkuMzctMjQuNTcgOS4zNy0zMy45NCAwTDM0LjUyIDI3Mi45N2MtOS4zNy05LjM3LTkuMzctMjQuNTcgMC0zMy45NHoiLz48L3N2Zz4=";
+    img.className = "left-arrow";
+    img.alt = "left arrow image";
+    arrowDiv.appendChild(img);
+
+    const link = document.createElement('a');
+    link.href = "#";
+    link.innerText = "Back"
+    arrowDiv.appendChild(link);
+
+    if(!visible) arrowDiv.style.display = "none";
+
+    obInstitutionModalHeader.prepend(arrowDiv);
+    return arrowDiv;
+}
+
+const _createCloseIcon = () => {
+    const span = document.createElement("span");
+    span.className = "institution-modal-close";
+    span.innerHTML = "&times;";
+    obInstitutionModalHeader.prepend(span);
+    return span;
+}
 
 /** Utils **/
 
@@ -306,7 +360,7 @@ const _getAllUniqueCountries = (institutions) => {
         arrCountries.push(...aspsp.countries)
     });
     let uniqueCountries = [...new Set(arrCountries)];
-    return uniqueCountries;
+    return uniqueCountries.sort((a, b) => a.localeCompare(b));
 }
 
 const _filterByCountry = (institutions, country) => {
@@ -314,11 +368,11 @@ const _filterByCountry = (institutions, country) => {
 }
 
 const _clearAllInnerNodes = () => {
-    const node = document.querySelectorAll(".list-institution");
+    const node = document.querySelectorAll(".institution-ob");
     if(!node) return;
     Array.from(node).forEach((el) => {
         el.remove();
-    })
+    });
 }
 
 const _getCountryFromISO = (country) => {
