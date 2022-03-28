@@ -93,6 +93,28 @@ const config = {
 new institutionSelector(exampleList, 'institution-modal-content', config);
 ```
 
+If custom redirect flow is required with `institution_id` in URL
+
+```js
+const container = document.querySelector(".institution-container");
+const observer = new MutationObserver((event) => {
+	const institutions = Array.from(document.querySelectorAll('.list-institution > a'));
+	institutions.forEach((institution) => {
+		institution.addEventListener("click", (e) => {
+			e.preventDefault();
+			const aspspId = e.currentTarget.getAttribute('data-institution');
+            // custom redirect
+			window.location = `http://example.com/${aspspId}`;
+		})
+	})
+  });
+
+const conf = {
+	childList: true
+};
+observer.observe(container, conf);
+```
+
 To test fully working example application, consider checking the following repositories and their corresponding examples:
 
 * [Node.js](https://github.com/nordigen/nordigen-node)
