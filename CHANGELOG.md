@@ -4,10 +4,10 @@
 
 - Sort countries in alphabetical order
 - Update hover effect to work on child elements
-- Hide back button when screen with countries is rendered
+- Hide back button when the screen with countries is rendered
 - Search countries by ISO code
 - Clear input element after navigating to institution list
-- Create close icon via JS
+- Create a close icon via JS
 - Small UI fixes
 
 
