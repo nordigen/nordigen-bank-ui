@@ -23,11 +23,28 @@ body {
 	background-color:#F2F2F2;
 }
 
+.institution-arrow-block {
+	display: flex;
+	align-items: center;
+}
 
-.left-arrow {
-	font-size: 2.6rem;
+.institution-arrow-block a {
+	text-decoration: none;
 	color: #8d9090;
+	font-size: 1.55rem;
+	position: relative;
+	font-weight: 500;
+	left: .5rem;
+}
+
+.institution-arrow-block a:hover {
+	text-decoration: underline;
+}
+
+.institution-arrow-block > .left-arrow {
 	cursor: pointer;
+	height: 1.4rem;
+	filter: invert(61%) sepia(7%) saturate(0%) hue-rotate(225deg) brightness(92%) contrast(92%);
 }
 
 
@@ -42,7 +59,7 @@ body {
 }
 
 .institution-search-bx-body {
-	max-height: 52vh;
+	max-height: 50vh;
 	overflow-y: auto;
 }
 
@@ -142,16 +159,16 @@ body {
 	flex-direction: column;
 }
 
-.list-institution {
+.institution-ob {
 	padding: 14px 0;
 	border-bottom: 1px solid #D7D8D8;
 }
 
-.list-institution:last-child {
+.institution-ob:last-child {
 	border: none;
 }
 
-.list-institution a {
+.institution-ob a {
 	padding-right: 2.5rem;
 	display: flex;
 	flex-direction: row;
@@ -171,7 +188,7 @@ body {
 }
 
 
-.list-institution:hover {
+.institution-ob:hover {
 	background-color: #F1F1F1;
 }
 
@@ -218,11 +235,6 @@ img.country-logo {
 		padding: 2.5rem;
 	}
 
-	.institution-modal-close {
-		display: none;
-	}
-
-
 	.institution-modal-header {
 		margin-top: 3rem;
 	}
@@ -231,7 +243,7 @@ img.country-logo {
 		font-size: 3rem;
 	}
 
-	.list-institution span {
+	.institution-ob span {
 		font-size: 1.9rem;
 	}
 }
