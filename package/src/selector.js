@@ -91,18 +91,18 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
 
 	institutionLogos.forEach((el) => {
 		const institutionList = document.createElement('div');
-		institutionList.className = "institution-ob ";
-        institutionList.className += "list-institution";
+		institutionList.className = "ob-institution ";
+        institutionList.className += "ob-list-institution";
 
 		let institutionRow = obInstitutionSbAnchor.cloneNode(true);
         let institutionImg = document.createElement("img");
         let instituionSpan = document.createElement("span");
-        instituionSpan.className = "span-text";
+        instituionSpan.className = "ob-span-text";
         instituionSpan.innerText = el.name;
 		institutionList.appendChild(institutionRow);
 
 		institutionImg.src = el.logo;
-		institutionImg.className = "institution-logo";
+		institutionImg.className = "ob-institution-logo";
 		institutionRow.className += `institution-${el.id}`;
 		institutionRow.href = el.id;
 
@@ -128,13 +128,13 @@ function createCountryListView(body, institutionLogos, config) {
 
     countries.forEach((country) => {
         const institutionList = document.createElement("div");
-        institutionList.className = "institution-ob";
-        institutionList.className += " country-list"
+        institutionList.className = "ob-institution";
+        institutionList.className += " ob-country-list"
 
         let institutionRow = obInstitutionSbAnchor.cloneNode(true);
         let institutionImg = document.createElement("span");
         let instituionSpan = document.createElement("span");
-        instituionSpan.className = "span-text";
+        instituionSpan.className = "ob-span-text";
         instituionSpan.innerText = _getCountryFromISO(country);
         institutionList.appendChild(institutionRow);
 
@@ -153,7 +153,7 @@ function createCountryListView(body, institutionLogos, config) {
     const targetNode = document.getElementById(body);
 	targetNode.appendChild(institutionContainer);
 
-    const institutionList = document.querySelectorAll(".institution-ob > a");
+    const institutionList = document.querySelectorAll(".ob-institution > a");
 
     Array.from(institutionList).forEach((el) => el.addEventListener("click", (e) => {
         const country = e.currentTarget.getAttribute("data-country");
@@ -174,8 +174,8 @@ function _institutionSbSearchAspsp(config) {
     const isCountryFilterActive = config.countryFilter;
     const input = document.querySelector(".institution-search-input");
     const filter = input.value.toUpperCase();
-    const institutionList = document.querySelectorAll(".institution-ob");
-    const countryList = document.querySelectorAll(".country-list > a");
+    const institutionList = document.querySelectorAll(".ob-institution");
+    const countryList = document.querySelectorAll(".ob-country-list > a");
 
     if(isCountryFilterActive && countryList.length > 0) {
         institutionList.forEach((cn) => {
@@ -203,7 +203,7 @@ function _institutionSbSearchAspsp(config) {
 
 function setOBModalStyles(config) {
     const styleConfig = config.styles;
-    const institutionList = Array.from(document.querySelectorAll(".institution-ob > a"));
+    const institutionList = Array.from(document.querySelectorAll(".ob-institution > a"));
 
     if(styleConfig?.backgroundColor) {
         obInstitutionSbModalContent.style.backgroundColor = config.backgroundColor;
@@ -271,7 +271,7 @@ function institutionSelector(institutions, targetNode, config={}) {
 };
 
 const _setOBHoverColor = (config) => {
-    const instList = Array.from(document.querySelectorAll(".institution-ob"));
+    const instList = Array.from(document.querySelectorAll(".ob-institution"));
     const hoverState = {
         hover: (event) => {
             event.currentTarget.style.backgroundColor = config.hoverColor;
@@ -291,7 +291,7 @@ const changeTextStyles = (styleEnum, styleConfig, institutionList) => {
     institutionList.map((el) => {
         const spanElement = el.getElementsByTagName("span");
         Array.from(spanElement).map((spanEl) => {
-            if(spanEl.classList.contains("span-text")) {
+            if(spanEl.classList.contains("ob-span-text")) {
                 if(styleEnum == "FontSize") {
                     spanEl.style.fontSize = styleConfig;
                 } else if(styleEnum == "TextColor") {
@@ -329,7 +329,7 @@ const _addBackArrow = ({visible}) => {
 
     const img = document.createElement("img");
     img.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgNTEyIj48IS0tIEZvbnQgQXdlc29tZSBQcm8gNS4xNS40IGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIC0tPjxwYXRoIGQ9Ik0zNC41MiAyMzkuMDNMMjI4Ljg3IDQ0LjY5YzkuMzctOS4zNyAyNC41Ny05LjM3IDMzLjk0IDBsMjIuNjcgMjIuNjdjOS4zNiA5LjM2IDkuMzcgMjQuNTIuMDQgMzMuOUwxMzEuNDkgMjU2bDE1NC4wMiAxNTQuNzVjOS4zNCA5LjM4IDkuMzIgMjQuNTQtLjA0IDMzLjlsLTIyLjY3IDIyLjY3Yy05LjM3IDkuMzctMjQuNTcgOS4zNy0zMy45NCAwTDM0LjUyIDI3Mi45N2MtOS4zNy05LjM3LTkuMzctMjQuNTcgMC0zMy45NHoiLz48L3N2Zz4=";
-    img.className = "left-arrow";
+    img.className = "ob-left-arrow";
     img.alt = "left arrow image";
     arrowDiv.appendChild(img);
 
@@ -368,7 +368,7 @@ const _filterByCountry = (institutions, country) => {
 }
 
 const _clearAllInnerNodes = () => {
-    const node = document.querySelectorAll(".institution-ob");
+    const node = document.querySelectorAll(".ob-institution");
     if(!node) return;
     Array.from(node).forEach((el) => {
         el.remove();

@@ -98,7 +98,7 @@ If custom redirect flow is required with `institution_id` in URL
 ```js
 const container = document.querySelector(".institution-container");
 const observer = new MutationObserver((event) => {
-	const institutions = Array.from(document.querySelectorAll('.list-institution > a'));
+	const institutions = Array.from(document.querySelectorAll('.ob-list-institution > a'));
 	institutions.forEach((institution) => {
 		institution.addEventListener("click", (e) => {
 			e.preventDefault();

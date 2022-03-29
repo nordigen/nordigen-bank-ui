@@ -41,7 +41,7 @@ body {
 	text-decoration: underline;
 }
 
-.institution-arrow-block > .left-arrow {
+.institution-arrow-block > .ob-left-arrow {
 	cursor: pointer;
 	height: 1.4rem;
 	filter: invert(61%) sepia(7%) saturate(0%) hue-rotate(225deg) brightness(92%) contrast(92%);
@@ -159,16 +159,16 @@ body {
 	flex-direction: column;
 }
 
-.institution-ob {
+.ob-institution {
 	padding: 14px 0;
 	border-bottom: 1px solid #D7D8D8;
 }
 
-.institution-ob:last-child {
+.ob-institution:last-child {
 	border: none;
 }
 
-.institution-ob a {
+.ob-institution a {
 	padding-right: 2.5rem;
 	display: flex;
 	flex-direction: row;
@@ -180,7 +180,7 @@ body {
 	font-size:2.5rem;
 }
 
-.span-text {
+.ob-span-text {
 	margin-left: 1.5rem;
 	font-size: 1.5rem;
 	font-weight: 600;
@@ -188,11 +188,11 @@ body {
 }
 
 
-.institution-ob:hover {
+.ob-institution:hover {
 	background-color: #F1F1F1;
 }
 
-img.institution-logo {
+img.ob-institution-logo {
 	width: 100%;
 	max-width: 3.5rem;
 	height: 3.5rem;
@@ -243,7 +243,7 @@ img.country-logo {
 		font-size: 3rem;
 	}
 
-	.institution-ob span {
+	.ob-institution span {
 		font-size: 1.9rem;
 	}
 }
