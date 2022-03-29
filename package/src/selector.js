@@ -2,7 +2,7 @@ const obInstitutionSbAnchor = document.createElement("a");
 const obInstitutionSbModalContent = document.getElementById("institution-modal-content");
 const obInstitutionSbHeading = document.getElementsByTagName('head')[0];
 const obInstitutionModalHeader = document.getElementsByClassName("institution-modal-header")[0];
-const StyleEnum = {
+const obStyleEnum = {
     FontSize: 'FontSize',
     TextColor: 'TextColor'
 };
@@ -214,11 +214,11 @@ function setOBModalStyles(config) {
     }
 
     if(styleConfig?.textColor) {
-        changeTextStyles(StyleEnum.TextColor, styleConfig.textColor, institutionList);
+        changeTextStyles(obStyleEnum.TextColor, styleConfig.textColor, institutionList);
     }
 
     if(styleConfig?.fontSize) {
-        changeTextStyles(StyleEnum.FontSize, styleConfig.fontSize, institutionList);
+        changeTextStyles(obStyleEnum.FontSize, styleConfig.fontSize, institutionList);
     }
 
     if(styleConfig?.hoverColor) {
