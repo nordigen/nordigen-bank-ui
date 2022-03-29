@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.2.0] - 2022-03-28
+## [1.2.0] - 2022-03-29
 
 - Sort countries in alphabetical order
 - Update hover effect to work on child elements
