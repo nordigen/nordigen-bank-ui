@@ -75,9 +75,12 @@ Create `institutionSelector` instance and pass following parameters:
 ```javascript
 // Pass your redirect link after user has been authorized in institution
 const config = {
+    // Redirect URL that is being used when modal is being closed.
     redirectUrl: 'https://www.example.com',
+    // Logo URL that will be shown below the modal form.
 	logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg',
-    countryFilter: false, // will display country list with corresponding institutions. When `countryFilter` is set to `false`, only list of institutions will be shown.
+    // Will display country list with corresponding institutions. When `countryFilter` is set to `false`, only list of institutions will be shown.
+    countryFilter: false,
     // style configs
     styles: {
         // URL to google font
@@ -91,6 +94,28 @@ const config = {
 
 
 new institutionSelector(exampleList, 'institution-modal-content', config);
+```
+
+If custom redirect flow is required with `institution_id` in URL
+
+```js
+const container = document.querySelector(".institution-container");
+const observer = new MutationObserver((event) => {
+	const institutions = Array.from(document.querySelectorAll('.ob-list-institution > a'));
+	institutions.forEach((institution) => {
+		institution.addEventListener("click", (e) => {
+			e.preventDefault();
+			const aspspId = e.currentTarget.getAttribute('data-institution');
+            // custom redirect
+			window.location = `http://example.com/${aspspId}`;
+		})
+	})
+  });
+
+const conf = {
+	childList: true
+};
+observer.observe(container, conf);
 ```
 
 To test fully working example application, consider checking the following repositories and their corresponding examples:

@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.2.0] - 2022-03-29
+
+- Sort countries in alphabetical order
+- Update hover effect to work on child elements
+- Hide back button when the screen with countries is rendered
+- Search countries by ISO code
+- Clear input element after navigating to institution list
+- Create a close icon via JS
+- Small UI fixes
+
+
 ## [1.1.4] - 2022-03-25
 
 - Fix agreement link

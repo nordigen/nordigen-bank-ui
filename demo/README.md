@@ -10,7 +10,7 @@ Pass some institution list to `institutionSelector` function.
 ## Configs options
 
 * `redirectUrl: 'https://www.example.com'` - redirect URL that is being used when modal is being closed.
-* `logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg'`  - Logo URL that will be show below the modal form.
+* `logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg'`  - Logo URL that will be shown below the modal form.
 * `countryFilter: true` - will display country list with corresponding institutions. When `countryFilter` is set to `false`, only list of institutions will be shown.
 * `styles: {}` - custom styling parameters. Example:
 ```css
