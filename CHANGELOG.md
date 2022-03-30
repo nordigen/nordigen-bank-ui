@@ -1,5 +1,12 @@
 # Changelog
 
+
+## [1.2.1] - 2022-03-30
+
+- Fix back button
+- Align center search icon
+
+
 ## [1.2.0] - 2022-03-29
 
 - Sort countries in alphabetical order
