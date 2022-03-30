@@ -162,7 +162,8 @@ function createCountryListView(body, institutionLogos, config) {
         _createInstitutionBankListView(body, institutions, config);
     }))
 
-    arrow.addEventListener("click", () => {
+    const arrowLink = arrow.getElementsByTagName("a")[0];
+    arrowLink.addEventListener("click", () => {
         _clearAllInnerNodes();
         createCountryListView(body, institutionLogos, config);
         arrow.style.display = "none";
@@ -318,7 +319,7 @@ const _clearSearchFormInput = () => {
 }
 
 const _addBackArrow = ({visible}) => {
-    const arrow = document.querySelector(".institution-arrow-block ");
+    const arrow = document.querySelector(".institution-arrow-block");
     if(arrow) {
         arrow.style.display = "flex";
         return arrow;
