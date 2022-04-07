@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.3.0] - 2022-04-07
+
+- Redesign UI
+- Add additional styles options
+- Add custom text to the bank selection screen
+
+
 ## [1.2.1] - 2022-03-30
 
 - Fix back button
