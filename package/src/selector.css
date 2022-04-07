@@ -23,6 +23,12 @@ body {
 	background-color:#F2F2F2;
 }
 
+.row {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
 .institution-arrow-block {
 	display: flex;
 	align-items: center;
@@ -52,22 +58,23 @@ body {
 	margin: 0 auto;
 	height: 100%;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+    grid-gap: 8rem;
 	padding: 2rem;
 }
 
 .institution-search-bx-body {
-	max-height: 50vh;
+	max-height: 49vh;
 	overflow-y: auto;
 }
 
 
 .institution-search-bx-body::-webkit-scrollbar-thumb {
-  background: #AEB0B0;
-  border-radius: 7px;
-  height: 3rem;
+    background: #d1d4d4;
+    border-radius: 7px;
+    height: 3rem;
 }
 
 .institution-search-bx-body::-webkit-scrollbar {
@@ -78,10 +85,10 @@ body {
 
 #institution-modal-content {
 	width: 100%;
-	max-width: 40rem;
-	min-height: 69rem;
+	max-width: 60rem;
+	min-height: 70rem;
 	background-color: #fff;
-	padding: 4.5rem;
+	padding: 4rem;
 	display: flex;
 	flex-direction: column;
 	box-shadow: 0px 1px 3px #00000029;
@@ -147,7 +154,7 @@ body {
 	padding: 1rem;
 	border-radius: 9px;
 	color: #8C8E8F;
-	border: 1px solid #8c8e8f;
+	border: 1px solid #D1D2D3;
 	font-size: 1.6rem;
 	font-weight: 400;
 	outline-color: #70b1f7;
@@ -156,24 +163,31 @@ body {
 
 .institution-container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .ob-institution {
-	padding: 14px 0;
-	border-bottom: 1px solid #D7D8D8;
-}
-
-.ob-institution:last-child {
-	border: none;
+	padding: 1.5rem;
+    border: 1px solid #EBEBEB;
+    margin: 0 1rem .6rem 0;
+    border-radius: 10px;
+    width: 24.5rem;
 }
 
 .ob-institution a {
-	padding-right: 2.5rem;
+	padding-right: .5rem;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	text-decoration: none;
+}
+
+.ob-institution a img.ob-arrow-right {
+    width: .8rem;
+    height: 1rem;
+    margin-left: auto;
+    filter: invert(7%) sepia(6%) saturate(1618%) hue-rotate(142deg) brightness(96%) contrast(87%);
 }
 
 .fi {
@@ -206,34 +220,83 @@ img.country-logo {
 	border-radius: 6px;
 }
 
-.institution-company-logo {
-	max-width: 13rem;
-	height: 10rem;
-	margin: 2.5rem 0 7rem;
+.container-onboarding {
+    max-width: 30rem;
 }
 
-@media screen and (max-width: 640px) {
+.container-onboarding p {
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: left;
+    line-height: 3rem;
+}
+
+.ob-btn-primary {
+    border: none;
+    width: 28rem;
+    height: 5rem;
+    margin-top: 10rem;
+    background: #3A53EE;
+    padding: 1rem;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 10px;
+    display: none;
+}
+
+.ob-btn-primary:hover {
+    background: #2f46d3;
+}
+
+.institution-company-logo {
+	max-width: 29rem;
+	height: 6.5rem;
+    margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 990px) {
+
+    .ob-institution {
+        width: 96%;
+    }
+}
+
+@media screen and (max-width: 720px) {
 
 	html {
 		font-size: 8px;
 	}
 
-	#institution-modal-content {
-		height: 100%;
+    #institution-modal-content {
 		max-width: 100%;
-		border-radius: 0;
+        height: 100%;
 	}
 
-	#institution-modal-content,
-	.institution-company-logo {
-		margin: 0;
-	}
+    .container-onboarding p {
+        text-align: center;
+    }
 
-	.institution-company-logo {
-		position: absolute;
-		bottom: 0;
-		padding: 2.5rem;
-	}
+    #institution-modal-content {
+        border-radius: 0;
+        display: none;
+    }
+
+    .institution-content-wrapper {
+        padding: 0;
+    }
+
+    .ob-btn-primary {
+        display: block;
+    }
+
+    .institution-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
 
 	.institution-modal-header {
 		margin-top: 3rem;
@@ -253,5 +316,4 @@ img.country-logo {
 	html {
 		font-size: 7px;
 	}
-
 }
