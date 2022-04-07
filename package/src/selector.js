@@ -30,8 +30,8 @@ const _obInstitutionSbcreateImgNode = ({url, className}) => {
 const _createInstitutionContainer = () => {
     const institutionContainer = _obInstitutionSbcreateHTMLNode(
         'div',
-		'institution-container',
-		obInstitutionSbModalContent
+        'institution-container',
+        obInstitutionSbModalContent
     );
     institutionContainer.classList.add('institution-search-bx-body');
     return institutionContainer;
@@ -89,35 +89,35 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
     _clearSearchFormInput();
     const institutionContainer = _createInstitutionContainer();
 
-	institutionLogos.forEach((el) => {
-		const institutionList = document.createElement('div');
-		institutionList.className = "ob-institution ";
+    institutionLogos.forEach((el) => {
+        const institutionList = document.createElement('div');
+        institutionList.className = "ob-institution ";
         institutionList.className += "ob-list-institution";
 
-		let institutionRow = obInstitutionSbAnchor.cloneNode(true);
+        let institutionRow = obInstitutionSbAnchor.cloneNode(true);
         let institutionImg = document.createElement("img");
         let instituionSpan = document.createElement("span");
         instituionSpan.className = "ob-span-text";
         instituionSpan.innerText = el.name;
-		institutionList.appendChild(institutionRow);
+        institutionList.appendChild(institutionRow);
 
-		institutionImg.src = el.logo;
-		institutionImg.className = "ob-institution-logo";
-		institutionRow.className += `institution-${el.id}`;
-		institutionRow.href = el.id;
+        institutionImg.src = el.logo;
+        institutionImg.className = "ob-institution-logo";
+        institutionRow.className += `institution-${el.id}`;
+        institutionRow.href = el.id;
 
-		institutionRow.dataset.institution = el.id;
-		institutionRow.appendChild(institutionImg);
+        institutionRow.dataset.institution = el.id;
+        institutionRow.appendChild(institutionImg);
         institutionRow.appendChild(instituionSpan);
         _appendArrowRight(institutionRow);
 
         institutionContainer.appendChild(institutionList);
-		institutionList.appendChild(institutionRow);
-	});
+        institutionList.appendChild(institutionRow);
+    });
 
     setOBModalStyles(config);
     const targetNode = document.getElementById(body);
-	targetNode.appendChild(institutionContainer);
+    targetNode.appendChild(institutionContainer);
 
 };
 
@@ -154,7 +154,7 @@ function createCountryListView(body, institutionLogos, config) {
     setOBModalStyles(config);
 
     const targetNode = document.getElementById(body);
-	targetNode.appendChild(institutionContainer);
+    targetNode.appendChild(institutionContainer);
 
     const institutionList = document.querySelectorAll(".ob-institution > a");
 

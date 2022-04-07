@@ -1,6 +1,6 @@
 
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 @font-face {
@@ -9,18 +9,18 @@
 }
 
 html {
-	font-size: 10px;
+    font-size: 10px;
 }
 
 html, body {
-	height: 100%;
+    height: 100%;
 }
 
 body {
-	padding: 0;
-	margin: 0;
-	font-family: "HK Grotesk";
-	background-color:#F2F2F2;
+    padding: 0;
+    margin: 0;
+    font-family: "HK Grotesk";
+    background-color:#F2F2F2;
 }
 
 .row {
@@ -30,44 +30,44 @@ body {
 }
 
 .institution-arrow-block {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .institution-arrow-block a {
-	text-decoration: none;
-	color: #8d9090;
-	font-size: 1.55rem;
-	position: relative;
-	font-weight: 500;
-	left: .5rem;
+    text-decoration: none;
+    color: #8d9090;
+    font-size: 1.55rem;
+    position: relative;
+    font-weight: 500;
+    left: .5rem;
 }
 
 .institution-arrow-block a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .institution-arrow-block > .ob-left-arrow {
-	cursor: pointer;
-	height: 1.4rem;
-	filter: invert(61%) sepia(7%) saturate(0%) hue-rotate(225deg) brightness(92%) contrast(92%);
+    cursor: pointer;
+    height: 1.4rem;
+    filter: invert(61%) sepia(7%) saturate(0%) hue-rotate(225deg) brightness(92%) contrast(92%);
 }
 
 
 .institution-content-wrapper {
-	margin: 0 auto;
-	min-height: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+    margin: 0 auto;
+    min-height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     grid-gap: 8rem;
-	padding: 2rem;
+    padding: 2rem;
 }
 
 .institution-search-bx-body {
-	max-height: 49vh;
-	overflow-y: auto;
+    max-height: 49vh;
+    overflow-y: auto;
 }
 
 
@@ -80,95 +80,95 @@ body {
 .institution-search-bx-body::-webkit-scrollbar {
     width: 6px;
     background-color: #F1F1F1;
-	border-radius: 7px;
+    border-radius: 7px;
 }
 
 #institution-modal-content {
-	width: 100%;
-	max-width: 60rem;
-	min-height: 70rem;
-	background-color: #fff;
-	padding: 4rem;
-	display: flex;
-	flex-direction: column;
-	box-shadow: 0px 1px 3px #00000029;
-	border-radius: 14px;
-	color: #1B2021;
+    width: 100%;
+    max-width: 60rem;
+    min-height: 70rem;
+    background-color: #fff;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 1px 3px #00000029;
+    border-radius: 14px;
+    color: #1B2021;
 }
 
 .institution-modal-header {
-	text-align: right;
+    text-align: right;
 }
 
 .institution-modal-header h2 {
-	text-align: left;
-	font-size: 2.5rem;
-	margin: 0;
+    text-align: left;
+    font-size: 2.5rem;
+    margin: 0;
 }
 
 .institution-modal-footer {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
 }
 
 .institution-modal-footer > a {
-	line-height: 2.8rem;
-	text-decoration: none;
-	color: #808080;
+    line-height: 2.8rem;
+    text-decoration: none;
+    color: #808080;
 }
 
 .institution-modal-footer > a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .institution-modal-close {
-	color: #8D9090;
-	font-size: 2.6rem;
-	font-weight: bold;
-	cursor: pointer;
-	position: relative;
-	top: -20px;
+    color: #8D9090;
+    font-size: 2.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    top: -20px;
 }
 
 .institution-search-container {
-	position: relative;
-	bottom: 2.2rem;
+    position: relative;
+    bottom: 2.2rem;
 }
 
 .institution-search-container input {
-	text-indent: 2.8rem;
+    text-indent: 2.8rem;
 }
 
 .institution-search-icon {
-	position: relative;
-	padding: 1rem;
-	height: 3.8rem;
-	top: 3.82rem;
+    position: relative;
+    padding: 1rem;
+    height: 3.8rem;
+    top: 3.82rem;
 }
 
 .institution-search-input {
-	width: 100%;
-	padding: 1rem;
-	border-radius: 9px;
-	color: #8C8E8F;
-	border: 1px solid #D1D2D3;
-	font-size: 1.6rem;
-	font-weight: 400;
-	outline-color: #70b1f7;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 9px;
+    color: #8C8E8F;
+    border: 1px solid #D1D2D3;
+    font-size: 1.6rem;
+    font-weight: 400;
+    outline-color: #70b1f7;
 }
 
 
 .institution-container {
-	display: flex;
-	flex-direction: row;
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
 }
 
 .ob-institution {
-	padding: 1.5rem;
+    padding: 1.5rem;
     border: 1px solid #EBEBEB;
     margin: 0 1rem .6rem 0;
     border-radius: 10px;
@@ -176,11 +176,11 @@ body {
 }
 
 .ob-institution a {
-	padding-right: .5rem;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	text-decoration: none;
+    padding-right: .5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
 }
 
 .ob-institution a img.ob-arrow-right {
@@ -191,33 +191,33 @@ body {
 }
 
 .fi {
-	font-size:2.5rem;
+    font-size:2.5rem;
 }
 
 .ob-span-text {
-	margin-left: 1.5rem;
-	font-size: 1.5rem;
-	font-weight: 600;
-	color: #1B2021;
+    margin-left: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1B2021;
 }
 
 
 .ob-institution:hover {
-	background-color: #F1F1F1;
+    background-color: #F1F1F1;
 }
 
 img.ob-institution-logo {
-	width: 100%;
-	max-width: 3.5rem;
-	height: 3.5rem;
-	border-radius: 6px;
+    width: 100%;
+    max-width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 6px;
 }
 
 img.country-logo {
-	width: 100%;
-	max-width: 3.5rem;
-	height: 3.5rem;
-	border-radius: 6px;
+    width: 100%;
+    max-width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 6px;
 }
 
 .container-onboarding {
@@ -252,8 +252,8 @@ img.country-logo {
 }
 
 .institution-company-logo {
-	max-width: 29rem;
-	height: 6.5rem;
+    max-width: 29rem;
+    height: 6.5rem;
     margin-bottom: 3rem;
 }
 
@@ -272,16 +272,16 @@ img.country-logo {
 
 @media screen and (max-width: 768px) {
 
-	html {
-		font-size: 8px;
-	}
+    html {
+        font-size: 8px;
+    }
 
     .institution-search-bx-body {
         max-height: 100%;
     }
 
     #institution-modal-content {
-		max-width: 100%;
+        max-width: 100%;
         min-height: 100%;
         height: 100%;
         border-radius: 0;
@@ -311,22 +311,22 @@ img.country-logo {
         flex-wrap: nowrap;
     }
 
-	.institution-modal-header {
-		margin-top: 3rem;
-	}
+    .institution-modal-header {
+        margin-top: 3rem;
+    }
 
-	.institution-modal-header h2 {
-		font-size: 3rem;
-	}
+    .institution-modal-header h2 {
+        font-size: 3rem;
+    }
 
-	.ob-institution span {
-		font-size: 1.9rem;
-	}
+    .ob-institution span {
+        font-size: 1.9rem;
+    }
 }
 
 @media screen and (device-height: 568px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
 
-	html {
-		font-size: 7px;
-	}
+    html {
+        font-size: 7px;
+    }
 }
