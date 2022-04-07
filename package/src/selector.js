@@ -30,8 +30,8 @@ const _obInstitutionSbcreateImgNode = ({url, className}) => {
 const _createInstitutionContainer = () => {
     const institutionContainer = _obInstitutionSbcreateHTMLNode(
         'div',
-		'institution-container',
-		obInstitutionSbModalContent
+        'institution-container',
+        obInstitutionSbModalContent
     );
     institutionContainer.classList.add('institution-search-bx-body');
     return institutionContainer;
@@ -89,34 +89,35 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
     _clearSearchFormInput();
     const institutionContainer = _createInstitutionContainer();
 
-	institutionLogos.forEach((el) => {
-		const institutionList = document.createElement('div');
-		institutionList.className = "ob-institution ";
+    institutionLogos.forEach((el) => {
+        const institutionList = document.createElement('div');
+        institutionList.className = "ob-institution ";
         institutionList.className += "ob-list-institution";
 
-		let institutionRow = obInstitutionSbAnchor.cloneNode(true);
+        let institutionRow = obInstitutionSbAnchor.cloneNode(true);
         let institutionImg = document.createElement("img");
         let instituionSpan = document.createElement("span");
         instituionSpan.className = "ob-span-text";
         instituionSpan.innerText = el.name;
-		institutionList.appendChild(institutionRow);
+        institutionList.appendChild(institutionRow);
 
-		institutionImg.src = el.logo;
-		institutionImg.className = "ob-institution-logo";
-		institutionRow.className += `institution-${el.id}`;
-		institutionRow.href = el.id;
+        institutionImg.src = el.logo;
+        institutionImg.className = "ob-institution-logo";
+        institutionRow.className += `institution-${el.id}`;
+        institutionRow.href = el.id;
 
-		institutionRow.dataset.institution = el.id;
-		institutionRow.appendChild(institutionImg);
+        institutionRow.dataset.institution = el.id;
+        institutionRow.appendChild(institutionImg);
         institutionRow.appendChild(instituionSpan);
+        _appendArrowRight(institutionRow);
 
         institutionContainer.appendChild(institutionList);
-		institutionList.appendChild(institutionRow);
-	});
+        institutionList.appendChild(institutionRow);
+    });
 
     setOBModalStyles(config);
     const targetNode = document.getElementById(body);
-	targetNode.appendChild(institutionContainer);
+    targetNode.appendChild(institutionContainer);
 
 };
 
@@ -144,6 +145,8 @@ function createCountryListView(body, institutionLogos, config) {
         institutionRow.appendChild(institutionImg);
         institutionRow.appendChild(instituionSpan);
 
+        _appendArrowRight(institutionRow);
+
         institutionContainer.appendChild(institutionList);
         institutionList.appendChild(institutionRow);
     });
@@ -151,7 +154,7 @@ function createCountryListView(body, institutionLogos, config) {
     setOBModalStyles(config);
 
     const targetNode = document.getElementById(body);
-	targetNode.appendChild(institutionContainer);
+    targetNode.appendChild(institutionContainer);
 
     const institutionList = document.querySelectorAll(".ob-institution > a");
 
@@ -205,17 +208,28 @@ function _institutionSbSearchAspsp(config) {
 function setOBModalStyles(config) {
     const styleConfig = config.styles;
     const institutionList = Array.from(document.querySelectorAll(".ob-institution > a"));
+    const btn = document.querySelector(".ob-btn-primary");
+
+
+    if(styleConfig?.modalBackgroundColor) {
+        obInstitutionSbModalContent.style.backgroundColor = styleConfig.modalBackgroundColor;
+    }
 
     if(styleConfig?.backgroundColor) {
-        obInstitutionSbModalContent.style.backgroundColor = config.backgroundColor;
+        document.body.style.background = styleConfig.backgroundColor;
     }
 
     if(styleConfig?.fontFamily) {
         includeFont(styleConfig.fontFamily);
     }
 
+    if(styleConfig?.modalTextColor) {
+        changeTextStyles(obStyleEnum.TextColor, styleConfig.modalTextColor, institutionList);
+    }
+
     if(styleConfig?.textColor) {
-        changeTextStyles(obStyleEnum.TextColor, styleConfig.textColor, institutionList);
+        const contentText = document.querySelector(".container-onboarding > p");
+        contentText.style.color = styleConfig.textColor;
     }
 
     if(styleConfig?.fontSize) {
@@ -225,6 +239,15 @@ function setOBModalStyles(config) {
     if(styleConfig?.hoverColor) {
         _setOBHoverColor(styleConfig);
     }
+
+    if (styleConfig?.buttonColor) {
+        btn.style.backgroundColor = styleConfig.buttonColor;
+    }
+
+    if (styleConfig?.buttonTextColor) {
+        btn.style.color = styleConfig.buttonTextColor;
+    }
+
 }
 
 function _institutionSbSetConfig(config){
@@ -233,6 +256,28 @@ function _institutionSbSetConfig(config){
     close.addEventListener("click", () => {
         window.location.href = (!redirect) ? document.URL : redirect;
     });
+}
+
+function _obConstructMobileEntryScreen(wrapper, config) {
+    const onboardContainer = document.createElement("div");
+    onboardContainer.className = "container-onboarding";
+    wrapper.prepend(onboardContainer);
+
+    const logoImage = _obInstitutionSbcreateImgNode({
+        url: config.logoUrl,
+        className: "institution-company-logo"
+    });
+    onboardContainer.appendChild(logoImage);
+
+    const createParagraph = document.createElement("p");
+    createParagraph.innerHTML = _truncateText(config.text);
+    onboardContainer.appendChild(createParagraph);
+
+    const button = document.createElement("button");
+    button.className = "ob-btn-primary";
+    button.innerHTML = "Continue";
+
+    onboardContainer.appendChild(button);
 }
 
 /**
@@ -253,22 +298,24 @@ function institutionSelector(institutions, targetNode, config={}) {
     const searchNode = _institutionSbSetSearchBox(searchDiv, config);
     root.appendChild(searchNode);
 
+    _obConstructMobileEntryScreen(institutionContentWrapper, config);
+
     if (config.countryFilter) {
         createCountryListView(targetNode, institutions, config);
     } else {
         _createInstitutionBankListView(targetNode, institutions, config);
     }
 
-    // create logo
-    if (config.logoUrl) {
-        const logoImage = _obInstitutionSbcreateImgNode({
-            url: config.logoUrl,
-            className: "institution-company-logo"
-        })
-        institutionContentWrapper.appendChild(logoImage);
-    }
-
     setOBModalStyles(config);
+
+
+    const obBtnPrimary = document.querySelector(".ob-btn-primary");
+    obBtnPrimary.addEventListener(("click"), () => {
+        obInstitutionSbModalContent.style.display = "flex";
+        const obContextSection = document.querySelector(".container-onboarding");
+        obContextSection.style.display = "none";
+    });
+
 };
 
 const _setOBHoverColor = (config) => {
@@ -278,7 +325,7 @@ const _setOBHoverColor = (config) => {
             event.currentTarget.style.backgroundColor = config.hoverColor;
         },
         out: (event) => {
-          event.currentTarget.style.backgroundColor = "transparent";
+            event.currentTarget.style.backgroundColor = "transparent";
         }
     }
 
@@ -316,6 +363,14 @@ const _clearSearchFormInput = () => {
     if(input.value.length > 0) {
         input.value = "";
     }
+}
+
+const _appendArrowRight = (child) => {
+    let arrowImg = document.createElement("img");
+    arrowImg.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuMS4xIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIyIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNjQgNDQ4Yy04LjE4OCAwLTE2LjM4LTMuMTI1LTIyLjYyLTkuMzc1Yy0xMi41LTEyLjUtMTIuNS0zMi43NSAwLTQ1LjI1TDE3OC44IDI1Nkw0MS4zOCAxMTguNmMtMTIuNS0xMi41LTEyLjUtMzIuNzUgMC00NS4yNXMzMi43NS0xMi41IDQ1LjI1IDBsMTYwIDE2MGMxMi41IDEyLjUgMTIuNSAzMi43NSAwIDQ1LjI1bC0xNjAgMTYwQzgwLjM4IDQ0NC45IDcyLjE5IDQ0OCA2NCA0NDh6Ii8+PC9zdmc+";
+    arrowImg.alt = "arrow image";
+    arrowImg.className = "ob-arrow-right"
+    child.appendChild(arrowImg);
 }
 
 const _addBackArrow = ({visible}) => {
@@ -377,6 +432,19 @@ const _clearAllInnerNodes = () => {
 }
 
 const _getCountryFromISO = (country) => {
-    let languageNames = new Intl.DisplayNames(['en'], {type: 'region'});
-    return languageNames.of(country);
+    try {
+        let languageNames = new Intl.DisplayNames(['en'], {type: 'region'});
+        return languageNames.of(country);
+    } catch(err) {
+        return country;
+    }
+}
+
+const _truncateText = (text) => {
+    const TEXT_LENGTH = 100;
+    if(text.length > 100) {
+        return (text.substring(0, TEXT_LENGTH) + "...");
+    }
+
+    return text;
 }
