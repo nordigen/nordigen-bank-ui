@@ -10,7 +10,7 @@
 	<body>
 
 		<div class="institution-content-wrapper">
-			<div id="institution-modal-content">
+            <div id="institution-modal-content">
 				<header class="institution-modal-header">
 					<h2>Select your bank:</h2>
 				</header>
@@ -23,8 +23,8 @@
 	<!-- <script src="../package/src/selector.js"></script> -->
 	<script>
 		// Get aspsps list from ob.nordigen.com/api/aspsps/?country=GB
-		const exampleList = [
-			 {
+		const institutionList = [
+			{
 				"id": "ABNAMRO_ABNAGB2LXXX",
 				"name": "ABN AMRO Bank Commercial",
 				"bic": "ABNAGB2LXXX",
@@ -130,7 +130,7 @@
 				"bic": "ASPKAT2LXXX",
 				"transaction_total_days": "730",
 				"countries": [
-				  "AT"
+                    "AT"
 				],
 				"logo": "https://cdn.nordigen.com/ais/KARNTNER_SPARKASSE_AG_KSPKAT2KXXX.png"
 			},
@@ -140,33 +140,41 @@
 				"bic": "KLRNSESS",
 				"transaction_total_days": "730",
 				"countries": [
-				  "SE",
-				  "FI",
-				  "DE",
-				  "DK",
-				  "AT",
-				  "GB",
-				  "NL",
-				  "NO"
+                    "SE",
+                    "FI",
+                    "DE",
+                    "DK",
+                    "AT",
+                    "GB",
+                    "NL",
+                    "NO"
 				],
 				"logo": "https://cdn.nordigen.com/ais/KLARNA_KLRNSESS.png"
-			  },
+			},
 		];
 
 		const config = {
 			redirectUrl: 'https://www.example.com',
 			logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg',
+            text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mavdvd",
 			countryFilter: true,
 			styles: {
+                // Primary
 				fontFamily: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
 				fontSize: '15',
-				textColor: '#1B2021',
-				backgroundColor: '#fff',
-				hoverColor: '#F1F1F1'
+                backgroundColor: '#F2F2F2',
+                textColor: '#222',
+                // Modal
+				modalTextColor: '#1B2021',
+				modalBackgroundColor: '#fff',
+				hoverColor: '#F1F1F1',
+                // Button
+                buttonColor: '#3A53EE',
+                buttonTextColor: '#fff'
 			}
 		};
 
-		institutionSelector(exampleList, 'institution-modal-content', config);
+		institutionSelector(institutionList, 'institution-modal-content', config);
 
 	</script>
 </html>
