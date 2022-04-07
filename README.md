@@ -77,19 +77,28 @@ Create `institutionSelector` instance and pass following parameters:
 const config = {
     // Redirect URL that is being used when modal is being closed.
     redirectUrl: 'https://www.example.com',
+    // Text that will be displayed on the left side under the logo. Text is limited to 100 characters, and rest will be truncated.
+    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mavdvd",
     // Logo URL that will be shown below the modal form.
 	logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg',
     // Will display country list with corresponding institutions. When `countryFilter` is set to `false`, only list of institutions will be shown.
     countryFilter: false,
     // style configs
-    styles: {
-        // URL to google font
-        fontFamily: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
-        fontSize: '15',
-        textColor: '#1B2021',
-        backgroundColor: '#fff',
-        hoverColor: '#F1F1F1'
-    }
+	styles: {
+        // Primary
+        // Link to google font
+		fontFamily: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
+		fontSize: '15',
+        backgroundColor: '#F2F2F2',
+        textColor: '#222',
+        // Modal
+		modalTextColor: '#1B2021',
+		modalBackgroundColor: '#fff',
+		hoverColor: '#F1F1F1',
+        // Button
+        buttonColor: '#3A53EE',
+        buttonTextColor: '#fff'
+	}
 };
 
 
