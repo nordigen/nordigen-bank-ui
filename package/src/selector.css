@@ -56,7 +56,7 @@ body {
 
 .institution-content-wrapper {
 	margin: 0 auto;
-	height: 100%;
+	min-height: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -262,30 +262,43 @@ img.country-logo {
     .ob-institution {
         width: 96%;
     }
+
+    #institution-modal-content {
+        min-height: 100%;
+        height: 100%;
+    }
+
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 768px) {
 
 	html {
 		font-size: 8px;
 	}
 
+    .institution-search-bx-body {
+        max-height: 100%;
+    }
+
     #institution-modal-content {
 		max-width: 100%;
+        min-height: 100%;
         height: 100%;
-	}
+        border-radius: 0;
+        display: none;
+    }
 
     .container-onboarding p {
         text-align: center;
     }
 
-    #institution-modal-content {
-        border-radius: 0;
-        display: none;
+    .container-onboarding {
+        text-align: center;
     }
 
     .institution-content-wrapper {
         padding: 0;
+        height: 100%;
     }
 
     .ob-btn-primary {
