@@ -1,7 +1,7 @@
 
 # Nordigen Bank UI
 
-![Nordigen Bank UI](https://i.postimg.cc/PrCFNNqd/nordigen-ui.png)
+![Nordigen Bank UI](https://i.postimg.cc/pTMwtMjh/JS-Ui.png)
 
 ## Installation
 
@@ -91,10 +91,11 @@ const config = {
         fontSize: '15',
         backgroundColor: '#F2F2F2',
         textColor: '#222',
+        headingColor: '#222',
+        linkColor: '#8d9090',
         // Modal
         modalTextColor: '#1B2021',
         modalBackgroundColor: '#fff',
-        hoverColor: '#F1F1F1',
         // Button
         buttonColor: '#3A53EE',
         buttonTextColor: '#fff'
