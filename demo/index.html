@@ -3,9 +3,9 @@
         <meta charset="utf-8" />
         <title>Nordigen Bank Selector UI</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="./node_modules/nordigen-bank-ui/package/src/selector.min.css" rel="stylesheet" />
+        <!-- <link href="./node_modules/nordigen-bank-ui/package/src/selector.min.css" rel="stylesheet" /> -->
         <!--Local-->
-        <!-- <link href="../package/src/selector.css" rel="stylesheet" /> -->
+        <link href="../package/src/selector.css" rel="stylesheet" />
     </head>
     <body>
 
@@ -18,9 +18,9 @@
         </div>
     </body>
 
-    <script src="./node_modules/nordigen-bank-ui/package/src/selector.js"></script>
+    <!-- <script src="./node_modules/nordigen-bank-ui/package/src/selector.js"></script> -->
     <!--Local-->
-    <!-- <script src="../package/src/selector.js"></script> -->
+    <script src="../package/src/selector.js"></script>
     <script>
         // Get aspsps list from ob.nordigen.com/api/aspsps/?country=GB
         const institutionList = [
@@ -156,7 +156,7 @@
         const config = {
             redirectUrl: 'https://www.example.com',
             logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg',
-            text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mavdvd",
+            text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mavdvd',
             countryFilter: true,
             styles: {
                 // Primary
@@ -164,10 +164,11 @@
                 fontSize: '15',
                 backgroundColor: '#F2F2F2',
                 textColor: '#222',
+                headingColor: '#222',
+                linkColor: '#8d9090',
                 // Modal
                 modalTextColor: '#1B2021',
                 modalBackgroundColor: '#fff',
-                hoverColor: '#F1F1F1',
                 // Button
                 buttonColor: '#3A53EE',
                 buttonTextColor: '#fff'
