@@ -1,7 +1,7 @@
 # Changelog
 
 
-## [1.3.1] - 2022-04-20
+## [1.3.1] - 2022-04-21
 
 - Change color of Heading text
 - Change color of link
