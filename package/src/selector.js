@@ -1,10 +1,10 @@
 const obInstitutionSbAnchor = document.createElement("a");
 const obInstitutionSbModalContent = document.getElementById("institution-modal-content");
-const obInstitutionSbHeading = document.getElementsByTagName('head')[0];
+const obInstitutionSbHeading = document.getElementsByTagName("head")[0];
 const obInstitutionModalHeader = document.getElementsByClassName("institution-modal-header")[0];
 const obStyleEnum = {
-    FontSize: 'FontSize',
-    TextColor: 'TextColor'
+    FontSize: "FontSize",
+    TextColor: "TextColor"
 };
 includeCssFile("https://unpkg.com/flag-icons@6.1.1/css/flag-icons.min.css");
 
@@ -29,11 +29,11 @@ const _obInstitutionSbcreateImgNode = ({url, className}) => {
 
 const _createInstitutionContainer = () => {
     const institutionContainer = _obInstitutionSbcreateHTMLNode(
-        'div',
-        'institution-container',
+        "div",
+        "institution-container",
         obInstitutionSbModalContent
     );
-    institutionContainer.classList.add('institution-search-bx-body');
+    institutionContainer.classList.add("institution-search-bx-body");
     return institutionContainer;
 }
 
@@ -54,27 +54,27 @@ function _institutionSbSetSearchBox(searchBox, config) {
     input.setAttribute("placeholder", "Search...");
     input.setAttribute("onkeyup", "_institutionSbSearchAspsp(config)");
 
-    searchBox.appendChild(searchImg);
     searchBox.appendChild(input);
+    searchBox.appendChild(searchImg);
     return searchBox;
 };
 
 
 
 function includeCssFile(filename) {
-    const style = document.createElement('link');
+    const style = document.createElement("link");
     style.href = filename;
-    style.type = 'text/css';
-    style.rel = 'stylesheet';
+    style.type = "text/css";
+    style.rel = "stylesheet";
     obInstitutionSbHeading.append(style);
 }
 
 function includeFont(url) {
     // Google fonts hrefs
-    const font = new URL(url).searchParams.get('family');
+    const font = new URL(url).searchParams.get("family");
     const hrefs = ["https://fonts.googleapis.com", "https://fonts.gstatic.com", url]
     hrefs.forEach((href) => {
-        const link = document.createElement('link');
+        const link = document.createElement("link");
         link.rel = "preconnect";
         link.href = href;
         obInstitutionSbHeading.append(link);
@@ -90,7 +90,7 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
     const institutionContainer = _createInstitutionContainer();
 
     institutionLogos.forEach((el) => {
-        const institutionList = document.createElement('div');
+        const institutionList = document.createElement("div");
         institutionList.className = "ob-institution ";
         institutionList.className += "ob-list-institution";
 
@@ -208,8 +208,6 @@ function _institutionSbSearchAspsp(config) {
 function setOBModalStyles(config) {
     const styleConfig = config.styles;
     const institutionList = Array.from(document.querySelectorAll(".ob-institution > a"));
-    const btn = document.querySelector(".ob-btn-primary");
-
 
     if(styleConfig?.modalBackgroundColor) {
         obInstitutionSbModalContent.style.backgroundColor = styleConfig.modalBackgroundColor;
@@ -236,18 +234,18 @@ function setOBModalStyles(config) {
         changeTextStyles(obStyleEnum.FontSize, styleConfig.fontSize, institutionList);
     }
 
-    if(styleConfig?.hoverColor) {
-        _setOBHoverColor(styleConfig);
+    if(styleConfig?.headingColor) {
+        const heading = document.querySelector(".institution-modal-header h2");
+        heading.style.color = styleConfig.headingColor;
     }
 
-    if (styleConfig?.buttonColor) {
-        btn.style.backgroundColor = styleConfig.buttonColor;
+    if(styleConfig?.linkColor) {
+        const arrow = document.querySelector(".institution-arrow-block > a");
+        arrow.style.color = styleConfig.linkColor;
     }
 
-    if (styleConfig?.buttonTextColor) {
-        btn.style.color = styleConfig.buttonTextColor;
-    }
-
+    _setOBOpacity();
+    _setOBButtonColor(styleConfig);
 }
 
 function _institutionSbSetConfig(config){
@@ -308,7 +306,6 @@ function institutionSelector(institutions, targetNode, config={}) {
 
     setOBModalStyles(config);
 
-
     const obBtnPrimary = document.querySelector(".ob-btn-primary");
     obBtnPrimary.addEventListener(("click"), () => {
         obInstitutionSbModalContent.style.display = "flex";
@@ -318,14 +315,29 @@ function institutionSelector(institutions, targetNode, config={}) {
 
 };
 
-const _setOBHoverColor = (config) => {
+
+const _setOBButtonColor = (config) => {
+    const btn = document.querySelector(".ob-btn-primary");
+
+    if (config?.buttonColor) {
+        const color = config.buttonColor;
+        btn.style.backgroundColor = color;
+    }
+
+    if (config?.buttonTextColor) {
+        btn.style.color = config.buttonTextColor;
+    }
+
+}
+
+const _setOBOpacity = () => {
     const instList = Array.from(document.querySelectorAll(".ob-institution"));
     const hoverState = {
         hover: (event) => {
-            event.currentTarget.style.backgroundColor = config.hoverColor;
+            event.currentTarget.style.filter = "brightness(95%)";
         },
         out: (event) => {
-            event.currentTarget.style.backgroundColor = "transparent";
+            event.currentTarget.style.filter = "brightness(100%)";
         }
     }
 
@@ -389,7 +401,7 @@ const _addBackArrow = ({visible}) => {
     img.alt = "left arrow image";
     arrowDiv.appendChild(img);
 
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = "#";
     link.innerText = "Back"
     arrowDiv.appendChild(link);
@@ -433,7 +445,7 @@ const _clearAllInnerNodes = () => {
 
 const _getCountryFromISO = (country) => {
     try {
-        let languageNames = new Intl.DisplayNames(['en'], {type: 'region'});
+        let languageNames = new Intl.DisplayNames(["en"], {type: "region"});
         return languageNames.of(country);
     } catch(err) {
         return country;
