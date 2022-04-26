@@ -128,6 +128,14 @@ const conf = {
 observer.observe(container, conf);
 ```
 
+## Development
+
+Minify and add vendor prefixes before pushing CSS changes
+
+```
+npm run build
+```
+
 To test fully working example application, consider checking the following repositories and their corresponding examples:
 
 * [Node.js](https://github.com/nordigen/nordigen-node)
