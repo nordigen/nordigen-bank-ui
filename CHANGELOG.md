@@ -1,6 +1,14 @@
 # Changelog
 
 
+
+## [1.3.2] - 2022-04-26
+
+- Change `institution-modal-content` from id to class
+- Update CSS
+- Add prettier for code formatting
+
+
 ## [1.3.1] - 2022-04-21
 
 - Change color of Heading text
