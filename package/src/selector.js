@@ -23,10 +23,10 @@ const _obInstitutionSbcreateHTMLNode = (element, className, node) => {
     return document.querySelector(`.${className}`);
 };
 
-const _obInstitutionSbcreateImgNode = ({url, className}) => {
+const _obInstitutionSbcreateImgNode = ({url, className, alt}) => {
     const img = document.createElement('img');
     img.src = url;
-    img.alt = 'search image';
+    img.alt = alt;
     img.className = className;
     return img;
 };
@@ -48,6 +48,7 @@ function _institutionSbSetSearchBox(searchBox, config) {
     const searchImg = _obInstitutionSbcreateImgNode({
         url: 'data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgMzAgMzAiIHdpZHRoPSIzMHB4IiBoZWlnaHQ9IjMwcHgiPjxwYXRoIGQ9Ik0gMTMgMyBDIDcuNDg4OTk3MSAzIDMgNy40ODg5OTcxIDMgMTMgQyAzIDE4LjUxMTAwMyA3LjQ4ODk5NzEgMjMgMTMgMjMgQyAxNS4zOTY1MDggMjMgMTcuNTk3Mzg1IDIyLjE0ODk4NiAxOS4zMjIyNjYgMjAuNzM2MzI4IEwgMjUuMjkyOTY5IDI2LjcwNzAzMSBBIDEuMDAwMSAxLjAwMDEgMCAxIDAgMjYuNzA3MDMxIDI1LjI5Mjk2OSBMIDIwLjczNjMyOCAxOS4zMjIyNjYgQyAyMi4xNDg5ODYgMTcuNTk3Mzg1IDIzIDE1LjM5NjUwOCAyMyAxMyBDIDIzIDcuNDg4OTk3MSAxOC41MTEwMDMgMyAxMyAzIHogTSAxMyA1IEMgMTcuNDMwMTIzIDUgMjEgOC41Njk4Nzc0IDIxIDEzIEMgMjEgMTcuNDMwMTIzIDE3LjQzMDEyMyAyMSAxMyAyMSBDIDguNTY5ODc3NCAyMSA1IDE3LjQzMDEyMyA1IDEzIEMgNSA4LjU2OTg3NzQgOC41Njk4Nzc0IDUgMTMgNSB6Ii8+PC9zdmc+',
         className: 'institution-search-icon',
+        alt: 'search icon',
     });
 
     searchBox.className += 'institution-search-container';
@@ -282,8 +283,12 @@ function _obConstructMobileEntryScreen(wrapper, config) {
     const logoImage = _obInstitutionSbcreateImgNode({
         url: config.logoUrl,
         className: 'institution-company-logo',
+        alt: 'Logotype',
     });
-    onboardContainer.appendChild(logoImage);
+    const imgWrapper = document.createElement('div');
+    imgWrapper.className = 'company-image-wrapper';
+    imgWrapper.appendChild(logoImage);
+    onboardContainer.appendChild(imgWrapper);
 
     const createParagraph = document.createElement('p');
     createParagraph.innerHTML = _truncateText(config.text);
@@ -307,7 +312,6 @@ function institutionSelector(institutions, targetNode, config = {}) {
     const institutionContentWrapper = document.querySelector(
         '.institution-content-wrapper'
     );
-
 
     _institutionSbSetConfig(config);
 

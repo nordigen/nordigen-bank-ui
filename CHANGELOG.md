@@ -1,6 +1,9 @@
 # Changelog
 
+## [1.3.3] - 2022-05-10
 
+- Fix Logotype width
+- Fix `alt` argument when creating image node
 
 ## [1.3.2] - 2022-04-26
 

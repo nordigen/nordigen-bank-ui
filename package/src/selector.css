@@ -252,10 +252,13 @@ img.country-logo {
     opacity: 0.75;
 }
 
-.institution-company-logo {
-    max-width: 29rem;
-    height: 6.5rem;
-    margin-bottom: 3rem;
+.company-image-wrapper img {
+    max-width: 100%;
+    height: auto;
+}
+
+.company-image-wrapper {
+    margin-bottom: 2rem;
 }
 
 @media screen and (max-width: 990px) {
