@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.3.4] - 2022-06-03
+
+- Update rollup config to minify js code
+
 ## [1.3.3] - 2022-05-10
 
 - Fix Logotype width
