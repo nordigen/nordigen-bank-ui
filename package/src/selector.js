@@ -260,7 +260,9 @@ function setOBModalStyles(config) {
 
     if (styleConfig?.linkColor) {
         const arrow = document.querySelector('.institution-arrow-block > a');
-        arrow.style.color = styleConfig.linkColor;
+        if (arrow) {
+            arrow.style.color = styleConfig.linkColor;
+        }
     }
 
     _setOBOpacity();
