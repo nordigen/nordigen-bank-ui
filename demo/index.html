@@ -10,7 +10,7 @@
     <body>
 
         <div class="institution-content-wrapper">
-            <div class="institution-modal-content">
+            <div class="institution-modal-content" id="institution-modal-content">
                 <header class="institution-modal-header">
                     <h2>Select your bank:</h2>
                 </header>
@@ -20,7 +20,7 @@
 
     <!-- <script src="./node_modules/nordigen-bank-ui/package/src/selector.js"></script> -->
     <!--Local-->
-    <script src="../package/src/selector.min.js"></script>
+    <script src="../package/src/selector.js"></script>
     <script>
         // Get institutions list from ob.nordigen.com/api/v2/institutions/?country=GB
         const institutionList = [
@@ -156,22 +156,19 @@
         const config = {
             redirectUrl: 'https://www.example.com',
             logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg',
-            text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mavdvd',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at enim nisl. Phasellus venenatis et nisl a vestibulum. In eu quam semper, aliquet elit ac, facilisis augue. Sed tempor est fringilla lectus consequat vestibulum. Integer et eros laoreet, placerat purus ac, hendrerit orci. Morbi pulvinar porta elit vel egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque maximus quis purus quis vestibulum. Nulla cursus eros ac eros mollis tincidunt. Nam at massa quis ex sagittis maximus ut eu elit. Nunc ac turpis neque. Nulla in massa condimentum, fermentum purus a, sollicitudin tortor. Phasellus ultrices.',
             countryFilter: true,
             styles: {
                 // Primary
                 fontFamily: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
-                fontSize: '15',
+                fontSize: '16',
                 backgroundColor: '#F2F2F2',
-                textColor: '#222',
+                textColor: '#1B2021',
                 headingColor: '#222',
-                linkColor: '#8d9090',
+                linkColor: '#3F52E5',
                 // Modal
                 modalTextColor: '#1B2021',
                 modalBackgroundColor: '#fff',
-                // Button
-                buttonColor: '#3A53EE',
-                buttonTextColor: '#fff'
             }
         };
 

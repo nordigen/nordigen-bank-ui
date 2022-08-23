@@ -1,7 +1,7 @@
 
 # Nordigen Bank UI
 
-![Nordigen Bank UI](https://i.postimg.cc/pTMwtMjh/JS-Ui.png)
+![Nordigen Bank UI](https://i.postimg.cc/Jtwf9YLm/Screenshot-from-2022-08-23-10-47-24.png)
 
 ## Installation
 

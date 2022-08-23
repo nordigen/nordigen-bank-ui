@@ -1,3 +1,25 @@
+:root {
+    --primary-cta: #3F52E5;
+    --primary-cta-200: #C5CAF7;
+    --primary-cta-650: #1A2CBD;
+    --grey-darker: #EEF1F7;
+    --text-color: #1B2021;
+    --text-secondary: #495555;
+    --modal-border: #D9D9D9;
+    --logo-container-border: #E9EBFC;
+}
+
+@keyframes jumpInfinite {
+    0% {
+        margin-top: 0;
+    }
+    50% {
+        margin-top: 20px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
 
 * {
     box-sizing: border-box;
@@ -10,6 +32,7 @@
 
 html {
     font-size: 10px;
+    scroll-behavior: smooth;
 }
 
 html, body {
@@ -36,15 +59,22 @@ body {
 
 .institution-arrow-block a {
     text-decoration: none;
-    color: #8d9090;
+    color: var(--primary-cta);
     font-size: 1.6rem;
     position: relative;
-    font-weight: 500;
-    left: .5rem;
+    font-weight: 600;
+    left: 1.2rem;
 }
 
-.institution-arrow-block a:hover {
-    text-decoration: underline;
+.institution-arrow-block:hover {
+    color: var(--primary-cta-650);
+    filter: invert(15%) sepia(85%) saturate(5792%) hue-rotate(239deg) brightness(74%) contrast(101%);
+}
+
+.institution-arrow-block:hover > a {
+    position: relative;
+    left: 20px;
+    transition:all .5s ease-in-out;
 }
 
 .institution-arrow-block > .ob-left-arrow {
@@ -52,7 +82,6 @@ body {
     height: 1.4rem;
     filter: invert(61%) sepia(7%) saturate(0%) hue-rotate(225deg) brightness(92%) contrast(92%);
 }
-
 
 .institution-content-wrapper {
     margin: 0 auto;
@@ -69,7 +98,6 @@ body {
     max-height: 49vh;
     overflow-y: auto;
 }
-
 
 .institution-search-bx-body::-webkit-scrollbar-thumb {
     background: #d1d4d4;
@@ -91,9 +119,9 @@ body {
     padding: 4.5rem;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 1px 3px #00000029;
-    border-radius: 14px;
-    color: #1B2021;
+    border-radius: 8px;
+    border: 1px solid var(--modal-border);
+    color: var(--text-color);
 }
 
 .institution-modal-header {
@@ -102,7 +130,7 @@ body {
 
 .institution-modal-header h2 {
     text-align: left;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     margin: 0;
 }
 
@@ -125,9 +153,7 @@ body {
 }
 
 .institution-modal-close {
-    color: #8D9090;
-    font-size: 2.6rem;
-    font-weight: bold;
+    color: var(--text-secondary);
     cursor: pointer;
     position: relative;
     top: -20px;
@@ -136,6 +162,7 @@ body {
 .institution-search-container {
     position: relative;
     top: 2.2rem;
+    padding-bottom: 1.5rem;
 }
 
 .institution-search-container input {
@@ -145,21 +172,20 @@ body {
 .institution-search-icon {
     position: relative;
     padding: 1rem;
-    height: 3.8rem;
-    bottom: 3.82rem;
+    height: 3.6rem;
+    bottom: 3.85rem;
 }
 
 .institution-search-input {
     width: 100%;
     padding: 1rem;
-    border-radius: 9px;
-    color: #8C8E8F;
-    border: 1px solid #D1D2D3;
+    border-radius: 4px;
+    color: var(--text-secondary);
+    border: 1px solid var(--primary-cta-200);
     font-size: 1.6rem;
     font-weight: 400;
-    outline-color: #70b1f7;
+    outline-color: var(--primary-cta-200);
 }
-
 
 .institution-container {
     display: flex;
@@ -168,11 +194,11 @@ body {
 }
 
 .ob-institution {
-    padding: 1.5rem;
-    border: 1px solid #EBEBEB;
-    margin: 0 1rem .6rem 0;
+    padding: 1.1rem;
+    border: 1px solid var(--primary-cta-200);
+    margin: 0 1rem 1.6rem 0;
     border-radius: 10px;
-    width: 23.5rem;
+    width: 24rem;
 }
 
 .ob-institution a {
@@ -183,11 +209,32 @@ body {
     text-decoration: none;
 }
 
+.ob-institution:hover {
+    border-color: var(--primary-cta);
+    transition: all .25s ease-in-out;
+}
+
+.ob-institution:active {
+    background-color: var(--grey-darker);
+}
+
 .ob-institution a img.ob-arrow-right {
     width: .8rem;
-    height: 1rem;
+    height: 1.4rem;
     margin-left: auto;
     filter: invert(7%) sepia(6%) saturate(1618%) hue-rotate(142deg) brightness(96%) contrast(87%);
+}
+
+.ob-institution a:active img.ob-arrow-right {
+    filter: invert(13%) sepia(79%) saturate(4951%) hue-rotate(239deg) brightness(85%) contrast(104%);
+}
+
+.ob-arrow-down {
+    display: none;
+    position: absolute;
+    top: calc(100vh - 50px);
+    left: 50%;
+    animation: jumpInfinite 1.5s infinite;
 }
 
 .fi {
@@ -196,15 +243,9 @@ body {
 
 .ob-span-text {
     margin-left: 1.5rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1B2021;
-}
-
-
-.ob-institution:hover {
-    background-color: #F1F1F1;
-    transition: all .25s ease-in-out;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text-color);
 }
 
 img.ob-institution-logo {
@@ -222,14 +263,15 @@ img.country-logo {
 }
 
 .container-onboarding {
-    max-width: 30rem;
+    max-width: 35rem;
 }
 
 .container-onboarding p {
-    font-size: 2rem;
-    font-weight: 500;
+    font-size: 1.4rem;
+    font-weight: 400;
     text-align: left;
-    line-height: 3rem;
+    line-height: 20px;
+    color: var(--text-secondary) !important;
 }
 
 .ob-btn-primary {
@@ -237,7 +279,7 @@ img.country-logo {
     width: 28rem;
     height: 5.5rem;
     margin-top: 10rem;
-    background: #3A53EE;
+    background: var(--primary-cta);
     padding: 1rem;
     color: #fff;
     font-size: 1.4rem;
@@ -255,10 +297,18 @@ img.country-logo {
 .company-image-wrapper img {
     max-width: 100%;
     height: auto;
+    padding: 2.2rem;
 }
 
 .company-image-wrapper {
-    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.4rem;
+    border: 1px solid var(--logo-container-border);
+    background: #FFFFFF;
+    border-radius: 16px;
+    width: 16rem;
+    height: 16rem;
 }
 
 @media screen and (max-width: 990px) {
@@ -279,24 +329,21 @@ img.country-logo {
     }
 
     .institution-modal-content {
-        max-width: 100%;
-        min-height: 100%;
-        height: 100%;
+        height: 100vh;
         border-radius: 0;
-        display: none;
-    }
-
-    .container-onboarding p {
-        text-align: center;
     }
 
     .container-onboarding {
-        text-align: center;
+        max-width: 100%;
+        height: 100vh;
+        padding: 13.8rem 3.2rem 0 3.2rem;
     }
 
     .institution-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
         padding: 0;
-        height: 100%;
     }
 
     .ob-btn-primary {
@@ -314,11 +361,15 @@ img.country-logo {
     }
 
     .institution-modal-header h2 {
-        font-size: 3rem;
+        font-size: 1.4rem;
     }
 
     .ob-institution span {
         font-size: 1.9rem;
+    }
+
+    .ob-arrow-down {
+        display: block;
     }
 }
 
