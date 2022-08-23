@@ -7,6 +7,7 @@
     --text-secondary: #495555;
     --modal-border: #D9D9D9;
     --logo-container-border: #E9EBFC;
+    font-size: 62.5%;
 }
 
 @keyframes jumpInfinite {
@@ -31,7 +32,6 @@
 }
 
 html {
-    font-size: 10px;
     scroll-behavior: smooth;
 }
 
@@ -44,6 +44,7 @@ body {
     margin: 0;
     font-family: "HK Grotesk";
     background-color:#F2F2F2;
+    font-size: 1.6rem;
 }
 
 .row {
