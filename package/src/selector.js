@@ -46,7 +46,7 @@ function _institutionSbSetSearchBox(searchBox, config) {
     let search = obInstitutionSbAnchor.cloneNode(true);
 
     const searchImg = _obInstitutionSbcreateImgNode({
-        url: 'data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgMzAgMzAiIHdpZHRoPSIzMHB4IiBoZWlnaHQ9IjMwcHgiPjxwYXRoIGQ9Ik0gMTMgMyBDIDcuNDg4OTk3MSAzIDMgNy40ODg5OTcxIDMgMTMgQyAzIDE4LjUxMTAwMyA3LjQ4ODk5NzEgMjMgMTMgMjMgQyAxNS4zOTY1MDggMjMgMTcuNTk3Mzg1IDIyLjE0ODk4NiAxOS4zMjIyNjYgMjAuNzM2MzI4IEwgMjUuMjkyOTY5IDI2LjcwNzAzMSBBIDEuMDAwMSAxLjAwMDEgMCAxIDAgMjYuNzA3MDMxIDI1LjI5Mjk2OSBMIDIwLjczNjMyOCAxOS4zMjIyNjYgQyAyMi4xNDg5ODYgMTcuNTk3Mzg1IDIzIDE1LjM5NjUwOCAyMyAxMyBDIDIzIDcuNDg4OTk3MSAxOC41MTEwMDMgMyAxMyAzIHogTSAxMyA1IEMgMTcuNDMwMTIzIDUgMjEgOC41Njk4Nzc0IDIxIDEzIEMgMjEgMTcuNDMwMTIzIDE3LjQzMDEyMyAyMSAxMyAyMSBDIDguNTY5ODc3NCAyMSA1IDE3LjQzMDEyMyA1IDEzIEMgNSA4LjU2OTg3NzQgOC41Njk4Nzc0IDUgMTMgNSB6Ii8+PC9zdmc+',
+        url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xLjggOC4xMDAwMUMxLjggNC42MjA2MSA0LjYyMDYxIDEuOCA4LjEwMDAxIDEuOEMxMS41Nzk0IDEuOCAxNC40IDQuNjIwNjEgMTQuNCA4LjEwMDAxQzE0LjQgOS43OTczNyAxMy43Mjg4IDExLjMzOCAxMi42MzcyIDEyLjQ3MDhDMTIuNjA2NCAxMi40OTQ1IDEyLjU3NjggMTIuNTIwNCAxMi41NDg2IDEyLjU0ODZDMTIuNTIwNCAxMi41NzY4IDEyLjQ5NDQgMTIuNjA2NSAxMi40NzA4IDEyLjYzNzJDMTEuMzM3OSAxMy43Mjg4IDkuNzk3MzYgMTQuNCA4LjEwMDAxIDE0LjRDNC42MjA2MSAxNC40IDEuOCAxMS41Nzk0IDEuOCA4LjEwMDAxWk0xMy4xNTU5IDE0LjQyODdDMTEuNzcwMiAxNS41MzcyIDEwLjAxMjUgMTYuMiA4LjEwMDAxIDE2LjJDMy42MjY1IDE2LjIgMCAxMi41NzM1IDAgOC4xMDAwMUMwIDMuNjI2NSAzLjYyNjUgMCA4LjEwMDAxIDBDMTIuNTczNSAwIDE2LjIgMy42MjY1IDE2LjIgOC4xMDAwMUMxNi4yIDEwLjAxMjUgMTUuNTM3MiAxMS43NzAyIDE0LjQyODcgMTMuMTU1OUwxNy43MzY0IDE2LjQ2MzZDMTguMDg3OSAxNi44MTUxIDE4LjA4NzkgMTcuMzg1IDE3LjczNjQgMTcuNzM2NEMxNy4zODQ5IDE4LjA4NzkgMTYuODE1MSAxOC4wODc5IDE2LjQ2MzYgMTcuNzM2NEwxMy4xNTU5IDE0LjQyODdaIiBmaWxsPSIjQjZCNkI2Ii8+Cjwvc3ZnPgo=',
         className: 'institution-search-icon',
         alt: 'search icon',
     });
@@ -92,7 +92,7 @@ function includeFont(url) {
 
 function _createInstitutionBankListView(body, institutionLogos, config) {
     if (config.countryFilter) _addBackArrow({visible: true});
-    _changeHeading();
+    _changeHeading('Select your bank');
     _clearSearchFormInput();
     const institutionContainer = _createInstitutionContainer();
 
@@ -145,7 +145,7 @@ function createCountryListView(body, institutionLogos, config) {
         institutionList.appendChild(institutionRow);
 
         institutionImg.className = `fi fi-${country.toLowerCase()}`;
-        institutionRow.href = '#';
+        institutionRow.href = '#!';
         institutionRow.setAttribute('data-country', country);
         institutionRow.appendChild(institutionImg);
         institutionRow.appendChild(instituionSpan);
@@ -266,7 +266,6 @@ function setOBModalStyles(config) {
     }
 
     _setOBOpacity();
-    _setOBButtonColor(styleConfig);
 }
 
 function _institutionSbSetConfig(config) {
@@ -296,11 +295,17 @@ function _obConstructMobileEntryScreen(wrapper, config) {
     createParagraph.innerHTML = _truncateText(config.text);
     onboardContainer.appendChild(createParagraph);
 
-    const button = document.createElement('button');
-    button.className = 'ob-btn-primary';
-    button.innerHTML = 'Continue';
+    const scrollDownLink = document.createElement('a');
+    scrollDownLink.href = '#institution-modal-content';
 
-    onboardContainer.appendChild(button);
+    const scrollDownImg = document.createElement('img');
+    scrollDownImg.src =
+        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNiAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAuODYwMDU3IDkuMDZDMC43NjU0MDEgOC45NjYxMiAwLjcxMjE1OCA4LjgzODMyIDAuNzEyMTU4IDguNzA1QzAuNzEyMTU4IDguNTcxNjggMC43NjU0MDEgOC40NDM4OCAwLjg2MDA1NyA4LjM1TDEuMDYwMDYgOC4xNUMxLjE1NDEzIDguMDUyMzQgMS4yODQ0NyA3Ljk5ODAzIDEuNDIwMDYgOEg1LjAwMDA2VjAuNUM1LjAwMDA2IDAuMjIzODU4IDUuMjIzOTEgMCA1LjUwMDA2IDBIMTAuNTAwMUMxMC43NzYyIDAgMTEuMDAwMSAwLjIyMzg1OCAxMS4wMDAxIDAuNVY4SDE0LjU4MDFDMTQuNzE1NiA3Ljk5ODAzIDE0Ljg0NiA4LjA1MjM0IDE0Ljk0MDEgOC4xNUwxNS4xNDAxIDguMzVDMTUuMjM0NyA4LjQ0Mzg4IDE1LjI4OCA4LjU3MTY4IDE1LjI4OCA4LjcwNUMxNS4yODggOC44MzgzMiAxNS4yMzQ3IDguOTY2MTIgMTUuMTQwMSA5LjA2TDguMzUwMDYgMTUuODVDOC4yNTkzMiAxNS45NDY3IDguMTMyNjQgMTYuMDAxNSA4LjAwMDA2IDE2LjAwMTVDNy44Njc0NyAxNi4wMDE1IDcuNzQwNzkgMTUuOTQ2NyA3LjY1MDA2IDE1Ljg1TDAuODYwMDU3IDkuMDZaIiBmaWxsPSIjNDk1NTU1Ii8+Cjwvc3ZnPgo=';
+    scrollDownImg.alt = 'arrow image';
+    scrollDownImg.className = 'ob-arrow-down';
+
+    scrollDownLink.appendChild(scrollDownImg);
+    onboardContainer.appendChild(scrollDownLink);
 }
 
 /**
@@ -317,7 +322,6 @@ function institutionSelector(institutions, targetNode, config = {}) {
 
     _institutionSbSetConfig(config);
 
-    // const root = document.getElementById(targetNode);
     // create search
     const searchDiv = document.createElement('div');
     const searchNode = _institutionSbSetSearchBox(searchDiv, config);
@@ -332,15 +336,6 @@ function institutionSelector(institutions, targetNode, config = {}) {
     }
 
     setOBModalStyles(config);
-
-    const obBtnPrimary = document.querySelector('.ob-btn-primary');
-    obBtnPrimary.addEventListener('click', () => {
-        obInstitutionSbModalContent.style.display = 'flex';
-        const obContextSection = document.querySelector(
-            '.container-onboarding'
-        );
-        obContextSection.style.display = 'none';
-    });
 }
 
 const _setOBButtonColor = (config) => {
@@ -426,8 +421,8 @@ const _addBackArrow = ({visible}) => {
     arrowDiv.appendChild(img);
 
     const link = document.createElement('a');
-    link.href = '#';
-    link.innerText = 'Back';
+    link.href = '#institution-modal-content';
+    link.innerText = 'Go back';
     arrowDiv.appendChild(link);
 
     if (!visible) arrowDiv.style.display = 'none';
@@ -437,11 +432,12 @@ const _addBackArrow = ({visible}) => {
 };
 
 const _createCloseIcon = () => {
-    const span = document.createElement('span');
-    span.className = 'institution-modal-close';
-    span.innerHTML = '&times;';
-    obInstitutionModalHeader.prepend(span);
-    return span;
+    const close = document.createElement('img');
+    close.src =
+        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTExLjg1IDEwLjQ0QzExLjk0NDYgMTAuNTMzOSAxMS45OTc5IDEwLjY2MTcgMTEuOTk3OSAxMC43OTVDMTEuOTk3OSAxMC45MjgzIDExLjk0NDYgMTEuMDU2MSAxMS44NSAxMS4xNUwxMS4xNSAxMS44NUMxMS4wNTYxIDExLjk0NDcgMTAuOTI4MyAxMS45OTc5IDEwLjc5NSAxMS45OTc5QzEwLjY2MTcgMTEuOTk3OSAxMC41MzM5IDExLjk0NDcgMTAuNDQgMTEuODVMNS45OTk5NyA3LjQxMDAxTDEuNTU5OTcgMTEuODVDMS40NjYwOSAxMS45NDQ3IDEuMzM4MjkgMTEuOTk3OSAxLjIwNDk3IDExLjk5NzlDMS4wNzE2NiAxMS45OTc5IDAuOTQzODU4IDExLjk0NDcgMC44NDk5NzQgMTEuODVMMC4xNDk5NzQgMTEuMTVDMC4wNTUzMTggMTEuMDU2MSAwLjAwMjA3NTIgMTAuOTI4MyAwLjAwMjA3NTIgMTAuNzk1QzAuMDAyMDc1MiAxMC42NjE3IDAuMDU1MzE4IDEwLjUzMzkgMC4xNDk5NzQgMTAuNDRMNC41ODk5NyA2TDAuMTQ5OTc0IDEuNTZDMC4wNTUzMTggMS40NjYxMiAwLjAwMjA3NTIgMS4zMzgzMiAwLjAwMjA3NTIgMS4yMDVDMC4wMDIwNzUyIDEuMDcxNjkgMC4wNTUzMTggMC45NDM4ODggMC4xNDk5NzQgMC44NTAwMDVMMC44NDk5NzQgMC4xNTAwMDVDMC45NDM4NTggMC4wNTUzNDg2IDEuMDcxNjYgMC4wMDIxMDU3MSAxLjIwNDk3IDAuMDAyMTA1NzFDMS4zMzgyOSAwLjAwMjEwNTcxIDEuNDY2MDkgMC4wNTUzNDg2IDEuNTU5OTcgMC4xNTAwMDVMNS45OTk5NyA0LjU5TDEwLjQ0IDAuMTUwMDA1QzEwLjUzMzkgMC4wNTUzNDg2IDEwLjY2MTcgMC4wMDIxMDU3MSAxMC43OTUgMC4wMDIxMDU3MUMxMC45MjgzIDAuMDAyMTA1NzEgMTEuMDU2MSAwLjA1NTM0ODYgMTEuMTUgMC4xNTAwMDVMMTEuODUgMC44NTAwMDVDMTEuOTQ0NiAwLjk0Mzg4OCAxMS45OTc5IDEuMDcxNjkgMTEuOTk3OSAxLjIwNUMxMS45OTc5IDEuMzM4MzIgMTEuOTQ0NiAxLjQ2NjEyIDExLjg1IDEuNTZMNy40MDk5NyA2TDExLjg1IDEwLjQ0WiIgZmlsbD0iIzQ5NTU1NSIvPgo8L3N2Zz4K';
+    close.className = 'institution-modal-close';
+    obInstitutionModalHeader.prepend(close);
+    return close;
 };
 
 /** Utils **/
@@ -477,8 +473,8 @@ const _getCountryFromISO = (country) => {
 };
 
 const _truncateText = (text) => {
-    const TEXT_LENGTH = 100;
-    if (text.length > 100) {
+    const TEXT_LENGTH = 450;
+    if (text.length > TEXT_LENGTH) {
         return text.substring(0, TEXT_LENGTH) + '...';
     }
 
