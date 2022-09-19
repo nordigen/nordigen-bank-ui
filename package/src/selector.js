@@ -480,3 +480,10 @@ const _truncateText = (text) => {
 
     return text;
 };
+
+export class NordigenBankUI {
+	constructor(key, identifier, config) {
+		// eslint-disable-next-line no-constructor-return
+		return institutionSelector(key, identifier, config);
+	}
+}
