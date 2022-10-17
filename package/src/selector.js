@@ -1,16 +1,47 @@
+import { translationMapping } from "./translation";
+
 const obInstitutionSbAnchor = document.createElement('a');
-const obInstitutionSbModalContent = document.getElementsByClassName(
-    'institution-modal-content'
-)[0];
+const mainWrapper = document.getElementById('institution-content-wrapper');
 const obInstitutionSbHeading = document.getElementsByTagName('head')[0];
-const obInstitutionModalHeader = document.getElementsByClassName(
-    'institution-modal-header'
-)[0];
 const obStyleEnum = {
     FontSize: 'FontSize',
     TextColor: 'TextColor',
 };
-includeCssFile('https://unpkg.com/flag-icons@6.1.1/css/flag-icons.min.css');
+
+// Initialize language
+const params = new URLSearchParams(window.location.search);
+const lang = params.get('lang') || 'en';
+const translation = Object.assign({}, ...translationMapping);
+
+const i18n = {
+    country: translation[lang]['Select your country'],
+    institution: translation[lang]['Select your bank'],
+    search: translation[lang]['Search'],
+    goBack: translation[lang]['Go back'],
+};
+
+(() => {
+    const obInstitutionSbModalContent = document.createElement('div');
+    obInstitutionSbModalContent.className = 'institution-modal-content';
+    obInstitutionSbModalContent.id = 'institution-modal-content';
+
+    // Create header
+    const header = document.createElement('header');
+    header.className = 'institution-modal-header';
+    const subHeading = document.createElement('h2');
+    subHeading.innerText = i18n.coutnry;
+    header.appendChild(subHeading);
+
+    mainWrapper.appendChild(obInstitutionSbModalContent);
+    obInstitutionSbModalContent.appendChild(header);
+
+    includeCssFile('https://unpkg.com/flag-icons@6.1.1/css/flag-icons.min.css');
+})();
+
+const obInstitutionSbModalContent = document.getElementById('institution-modal-content');
+const obInstitutionModalHeader = document.getElementsByClassName(
+    'institution-modal-header'
+)[0];
 
 const _obInstitutionSbcreateHTMLNode = (element, className, node) => {
     // check if node exists before creating it
@@ -32,6 +63,11 @@ const _obInstitutionSbcreateImgNode = ({url, className, alt}) => {
 };
 
 const _createInstitutionContainer = () => {
+    const obInstitutionSbModalContent = document.createElement('div');
+    obInstitutionSbModalContent.className = 'institution-modal-content';
+    obInstitutionSbModalContent.id = 'institution-modal-content';
+
+
     const institutionContainer = _obInstitutionSbcreateHTMLNode(
         'div',
         'institution-container',
@@ -56,7 +92,7 @@ function _institutionSbSetSearchBox(searchBox, config) {
 
     // Set attributes
     search.href = '#';
-    input.setAttribute('placeholder', 'Search...');
+    input.setAttribute('placeholder', `${i18n.search}...`);
     input.setAttribute('onkeyup', '_institutionSbSearchAspsp(config)');
 
     searchBox.appendChild(input);
@@ -92,7 +128,7 @@ function includeFont(url) {
 
 function _createInstitutionBankListView(body, institutionLogos, config) {
     if (config.countryFilter) _addBackArrow({visible: true});
-    _changeHeading('Select your bank');
+    _changeHeading(i18n.institution);
     _clearSearchFormInput();
     const institutionContainer = _createInstitutionContainer();
 
@@ -123,11 +159,12 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
     });
 
     setOBModalStyles(config);
+    const obInstitutionSbModalContent = document.getElementById('institution-modal-content');
     obInstitutionSbModalContent.appendChild(institutionContainer);
 }
 
 function createCountryListView(body, institutionLogos, config) {
-    _changeHeading('Select your country');
+    _changeHeading(i18n.coutnry);
     const arrow = _addBackArrow({visible: false});
     const countries = _getAllUniqueCountries(institutionLogos);
     const institutionContainer = _createInstitutionContainer();
@@ -157,6 +194,7 @@ function createCountryListView(body, institutionLogos, config) {
     });
 
     setOBModalStyles(config);
+    const obInstitutionSbModalContent = document.getElementById('institution-modal-content');
     obInstitutionSbModalContent.appendChild(institutionContainer);
 
     const institutionList = document.querySelectorAll('.ob-institution > a');
@@ -214,8 +252,9 @@ function _institutionSbSearchAspsp(config) {
 }
 
 function setOBModalStyles(config) {
+    const obInstitutionSbModalContent = document.getElementById('institution-modal-content');
     const styleConfig = config.styles;
-    const institutionList = Array.from(
+const institutionList = Array.from(
         document.querySelectorAll('.ob-institution > a')
     );
 
@@ -316,18 +355,16 @@ function _obConstructMobileEntryScreen(wrapper, config) {
  * @return
  */
 function institutionSelector(institutions, targetNode, config = {}) {
-    const institutionContentWrapper = document.querySelector(
-        '.institution-content-wrapper'
-    );
 
     _institutionSbSetConfig(config);
 
     // create search
     const searchDiv = document.createElement('div');
     const searchNode = _institutionSbSetSearchBox(searchDiv, config);
+
     obInstitutionSbModalContent.appendChild(searchNode);
 
-    _obConstructMobileEntryScreen(institutionContentWrapper, config);
+    _obConstructMobileEntryScreen(mainWrapper, config);
 
     if (config.countryFilter) {
         createCountryListView(targetNode, institutions, config);
@@ -383,7 +420,7 @@ const changeTextStyles = (styleEnum, styleConfig, institutionList) => {
     });
 };
 
-const _changeHeading = (text = 'Select your bank') => {
+const _changeHeading = (text = i18n.institution) => {
     document.querySelector('.institution-modal-header h2').innerHTML = text;
 };
 
@@ -422,7 +459,7 @@ const _addBackArrow = ({visible}) => {
 
     const link = document.createElement('a');
     link.href = '#institution-modal-content';
-    link.innerText = 'Go back';
+    link.innerText = i18n.goBack;
     arrowDiv.appendChild(link);
 
     if (!visible) arrowDiv.style.display = 'none';
