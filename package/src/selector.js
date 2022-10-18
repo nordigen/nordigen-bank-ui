@@ -10,8 +10,9 @@ const obStyleEnum = {
 
 // Initialize language
 const params = new URLSearchParams(window.location.search);
-const lang = params.get('lang') || 'en';
 const translation = Object.assign({}, ...translationMapping);
+const langQuery = params.get('lang') || 'en';
+const lang = translation[langQuery] ? langQuery : 'en';
 
 const i18n = {
     country: translation[lang]['Select your country'],
