@@ -125,11 +125,11 @@ body {
     color: var(--text-color);
 }
 
-.institution-modal-header {
+#institution-modal-header {
     text-align: right;
 }
 
-.institution-modal-header h2 {
+#institution-modal-header h2 {
     text-align: left;
     font-size: 1.8rem;
     margin: 0;
@@ -360,11 +360,11 @@ img.country-logo {
         flex-wrap: nowrap;
     }
 
-    .institution-modal-header {
+    #institution-modal-header {
         margin-top: 3rem;
     }
 
-    .institution-modal-header h2 {
+    #institution-modal-header h2 {
         font-size: 1.4rem;
     }
 

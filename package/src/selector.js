@@ -28,7 +28,7 @@ const i18n = {
 
     // Create header
     const header = document.createElement('header');
-    header.className = 'institution-modal-header';
+    header.id = 'institution-modal-header';
     const subHeading = document.createElement('h2');
     subHeading.innerText = i18n.coutnry;
     header.appendChild(subHeading);
@@ -40,9 +40,7 @@ const i18n = {
 })();
 
 const obInstitutionSbModalContent = document.getElementById('institution-modal-content');
-const obInstitutionModalHeader = document.getElementsByClassName(
-    'institution-modal-header'
-)[0];
+const obInstitutionModalHeader = document.getElementById('institution-modal-header');
 
 const _obInstitutionSbcreateHTMLNode = (element, className, node) => {
     // check if node exists before creating it
@@ -255,7 +253,7 @@ function _institutionSbSearchAspsp(config) {
 function setOBModalStyles(config) {
     const obInstitutionSbModalContent = document.getElementById('institution-modal-content');
     const styleConfig = config.styles;
-const institutionList = Array.from(
+    const institutionList = Array.from(
         document.querySelectorAll('.ob-institution > a')
     );
 
@@ -294,7 +292,7 @@ const institutionList = Array.from(
     }
 
     if (styleConfig?.headingColor) {
-        const heading = document.querySelector('.institution-modal-header h2');
+        const heading = document.querySelector('#institution-modal-header h2');
         heading.style.color = styleConfig.headingColor;
     }
 
@@ -422,7 +420,7 @@ const changeTextStyles = (styleEnum, styleConfig, institutionList) => {
 };
 
 const _changeHeading = (text = i18n.institution) => {
-    document.querySelector('.institution-modal-header h2').innerHTML = text;
+    document.querySelector('#institution-modal-header h2').innerHTML = text;
 };
 
 const _clearSearchFormInput = () => {
