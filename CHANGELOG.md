@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.5.0] - 2022-10-18
+
+- Language query parameter for internalization
+
 ## [1.3.4] - 2022-06-03
 
 - Update rollup config to minify js code

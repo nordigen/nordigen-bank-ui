@@ -84,7 +84,7 @@ body {
     filter: invert(61%) sepia(7%) saturate(0%) hue-rotate(225deg) brightness(92%) contrast(92%);
 }
 
-.institution-content-wrapper {
+#institution-content-wrapper {
     margin: 0 auto;
     min-height: 100%;
     display: flex;
@@ -125,11 +125,11 @@ body {
     color: var(--text-color);
 }
 
-.institution-modal-header {
+#institution-modal-header {
     text-align: right;
 }
 
-.institution-modal-header h2 {
+#institution-modal-header h2 {
     text-align: left;
     font-size: 1.8rem;
     margin: 0;
@@ -195,19 +195,22 @@ body {
 }
 
 .ob-institution {
-    padding: 1.1rem;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
     border: 1px solid var(--primary-cta-200);
     margin: 0 1rem 1.6rem 0;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 24rem;
 }
 
 .ob-institution a {
-    padding-right: .5rem;
     display: flex;
+    align-items: center;;
     flex-direction: row;
-    align-items: center;
+    padding-right: .5rem;
     text-decoration: none;
+    width: 100%;
 }
 
 .ob-institution:hover {
@@ -268,7 +271,7 @@ img.country-logo {
 }
 
 .container-onboarding p {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 400;
     text-align: left;
     line-height: 20px;
@@ -340,7 +343,7 @@ img.country-logo {
         padding: 13.8rem 3.2rem 0 3.2rem;
     }
 
-    .institution-content-wrapper {
+    #institution-content-wrapper {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -357,11 +360,11 @@ img.country-logo {
         flex-wrap: nowrap;
     }
 
-    .institution-modal-header {
+    #institution-modal-header {
         margin-top: 3rem;
     }
 
-    .institution-modal-header h2 {
+    #institution-modal-header h2 {
         font-size: 1.4rem;
     }
 

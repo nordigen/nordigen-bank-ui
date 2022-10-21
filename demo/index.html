@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -8,19 +9,13 @@
         <link href="../package/src/selector.css" rel="stylesheet" />
     </head>
     <body>
-
-        <div class="institution-content-wrapper">
-            <div class="institution-modal-content" id="institution-modal-content">
-                <header class="institution-modal-header">
-                    <h2>Select your bank:</h2>
-                </header>
-            </div>
-        </div>
+        <div id="institution-content-wrapper"></div>
     </body>
 
-    <!-- <script src="./node_modules/nordigen-bank-ui/package/src/selector.js"></script> -->
+    <!-- <script src="./node_modules/nordigen-bank-ui/package/src/selector.min.js"></script> -->
+
     <!--Local-->
-    <script src="../package/src/selector.js"></script>
+    <script src="../package/src/selector.min.js"></script>
     <script>
         // Get institutions list from ob.nordigen.com/api/v2/institutions/?country=GB
         const institutionList = [

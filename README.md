@@ -14,9 +14,9 @@ $ yarn add nordigen-bank-ui
 
 Or add package via `script` tag using CDN
 
-* CSS: https://unpkg.com/nordigen-bank-ui@1.3.4/package/src/selector.min.css
+* CSS: https://unpkg.com/nordigen-bank-ui@1.5.0/package/src/selector.min.css
 
-* JS: https://unpkg.com/nordigen-bank-ui@1.3.4/package/src/selector.min.js
+* JS: https://unpkg.com/nordigen-bank-ui@1.5.0/package/src/selector.min.js
 ## Examples
 
 Full example can be found in a `demo` folder.
@@ -26,16 +26,9 @@ Create `index.html`
 ```html
 <link href="./node_modules/nordigen-bank-ui/package/src/selector.min.css" rel="stylesheet" />
 
-    <div class="institution-content-wrapper">
-        <div id="institution-modal-content">
-            <header class="institution-modal-header ">
-                <span class="institution-modal-close">&times;</span>
-                <h2>Select your bank:</h2>
-            </header>
-        </div>
-    </div>
+    <div id="institution-content-wrapper"></div>
 
-<script src="./node_modules/nordigen-bank-ui/package/src/selector.js"></script>
+<script src="./node_modules/nordigen-bank-ui/package/src/selector.min.js"></script>
 ```
 
 Next step is to fetch institutions list from [Nordigen API](https://nordigen.com/en/docs/account-information/integration/parameters-and-responses/#/institutions/retrieve%20all%20supported%20Institutions%20in%20a%20given%20country)
@@ -105,6 +98,9 @@ const config = {
 
 new institutionSelector(exampleList, 'institution-modal-content', config);
 ```
+
+To use internalization pass query parameter `lang` with appropriate language in [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes#:~:text=ISO%20639%20is%20a%20standardized,later%20versions%20of%20the%20nomenclature) format `lang=de`
+
 
 If custom redirect flow is required with `institution_id` in URL
 
