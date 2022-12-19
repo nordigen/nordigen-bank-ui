@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.5.1] - 2022-12-19
+
+- Fix i18n.country typo [#27](https://github.com/nordigen/nordigen-bank-ui/pull/27)
+
 ## [1.5.0] - 2022-10-18
 
 - Language query parameter for internalization
