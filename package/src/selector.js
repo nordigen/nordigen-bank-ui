@@ -30,7 +30,7 @@ const i18n = {
     const header = document.createElement('header');
     header.id = 'institution-modal-header';
     const subHeading = document.createElement('h2');
-    subHeading.innerText = i18n.coutnry;
+    subHeading.innerText = i18n.country;
     header.appendChild(subHeading);
 
     mainWrapper.appendChild(obInstitutionSbModalContent);
@@ -163,7 +163,7 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
 }
 
 function createCountryListView(body, institutionLogos, config) {
-    _changeHeading(i18n.coutnry);
+    _changeHeading(i18n.country);
     const arrow = _addBackArrow({visible: false});
     const countries = _getAllUniqueCountries(institutionLogos);
     const institutionContainer = _createInstitutionContainer();
