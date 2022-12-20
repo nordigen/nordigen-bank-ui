@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.5.2] - 2022-12-20
+    - Minify js
+    - Add Husky pre-commit hook to run prettier and minify css/js
+    - Update package version for demo app
 ## [1.5.1] - 2022-12-19
 
 - Fix i18n.country typo [#27](https://github.com/nordigen/nordigen-bank-ui/pull/27)

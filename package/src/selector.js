@@ -1,4 +1,4 @@
-import { translationMapping } from "./translation";
+import {translationMapping} from './translation';
 
 const obInstitutionSbAnchor = document.createElement('a');
 const mainWrapper = document.getElementById('institution-content-wrapper');
@@ -39,8 +39,12 @@ const i18n = {
     includeCssFile('https://unpkg.com/flag-icons@6.1.1/css/flag-icons.min.css');
 })();
 
-const obInstitutionSbModalContent = document.getElementById('institution-modal-content');
-const obInstitutionModalHeader = document.getElementById('institution-modal-header');
+const obInstitutionSbModalContent = document.getElementById(
+    'institution-modal-content'
+);
+const obInstitutionModalHeader = document.getElementById(
+    'institution-modal-header'
+);
 
 const _obInstitutionSbcreateHTMLNode = (element, className, node) => {
     // check if node exists before creating it
@@ -65,7 +69,6 @@ const _createInstitutionContainer = () => {
     const obInstitutionSbModalContent = document.createElement('div');
     obInstitutionSbModalContent.className = 'institution-modal-content';
     obInstitutionSbModalContent.id = 'institution-modal-content';
-
 
     const institutionContainer = _obInstitutionSbcreateHTMLNode(
         'div',
@@ -158,7 +161,9 @@ function _createInstitutionBankListView(body, institutionLogos, config) {
     });
 
     setOBModalStyles(config);
-    const obInstitutionSbModalContent = document.getElementById('institution-modal-content');
+    const obInstitutionSbModalContent = document.getElementById(
+        'institution-modal-content'
+    );
     obInstitutionSbModalContent.appendChild(institutionContainer);
 }
 
@@ -193,7 +198,9 @@ function createCountryListView(body, institutionLogos, config) {
     });
 
     setOBModalStyles(config);
-    const obInstitutionSbModalContent = document.getElementById('institution-modal-content');
+    const obInstitutionSbModalContent = document.getElementById(
+        'institution-modal-content'
+    );
     obInstitutionSbModalContent.appendChild(institutionContainer);
 
     const institutionList = document.querySelectorAll('.ob-institution > a');
@@ -251,7 +258,9 @@ function _institutionSbSearchAspsp(config) {
 }
 
 function setOBModalStyles(config) {
-    const obInstitutionSbModalContent = document.getElementById('institution-modal-content');
+    const obInstitutionSbModalContent = document.getElementById(
+        'institution-modal-content'
+    );
     const styleConfig = config.styles;
     const institutionList = Array.from(
         document.querySelectorAll('.ob-institution > a')
@@ -354,7 +363,6 @@ function _obConstructMobileEntryScreen(wrapper, config) {
  * @return
  */
 function institutionSelector(institutions, targetNode, config = {}) {
-
     _institutionSbSetConfig(config);
 
     // create search

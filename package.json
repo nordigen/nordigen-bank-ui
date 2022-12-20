@@ -1,6 +1,6 @@
 {
     "name": "nordigen-bank-ui",
-    "version": "1.5.1",
+    "version": "1.5.2",
     "description": "Nordigen Bank UI selector",
     "main": "package/src/selector.js",
     "module": "package/src/selector.js",
@@ -22,7 +22,8 @@
     "scripts": {
         "build": "rollup -c",
         "watch": "rollup -c -w",
-        "fix:prettier": "prettier 'package/src/*.js' --write"
+        "fix:prettier": "prettier 'package/src/*.js' --write",
+        "prepare": "husky install"
     },
     "prettier": {
         "semi": true,
@@ -35,6 +36,7 @@
     "browserslist": "last 10 versions",
     "devDependencies": {
         "autoprefixer": "^10.3.4",
+        "husky": "^8.0.2",
         "prettier": "2.6.2",
         "rollup": "^2.56.3",
         "rollup-plugin-postcss": "^4.0.1",
