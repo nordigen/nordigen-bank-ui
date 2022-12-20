@@ -14,9 +14,9 @@ $ yarn add nordigen-bank-ui
 
 Or add package via `script` tag using CDN
 
-* CSS: https://unpkg.com/nordigen-bank-ui@1.5.0/package/src/selector.min.css
+* CSS: https://unpkg.com/nordigen-bank-ui@1.5.2/package/src/selector.min.css
 
-* JS: https://unpkg.com/nordigen-bank-ui@1.5.0/package/src/selector.min.js
+* JS: https://unpkg.com/nordigen-bank-ui@1.5.2/package/src/selector.min.js
 ## Examples
 
 Full example can be found in a `demo` folder.
@@ -126,7 +126,7 @@ observer.observe(container, conf);
 
 ## Development
 
-Minify and add vendor prefixes before pushing CSS changes
+Minify and add vendor prefixes before pushing CSS and JS changes
 
 ```
 npm run build
@@ -137,3 +137,4 @@ To test fully working example application, consider checking the following repos
 * [Node.js](https://github.com/nordigen/nordigen-node)
 * [Python](https://github.com/nordigen/nordigen-python)
 * [Ruby](https://github.com/nordigen/nordigen-ruby)
+* [PHP](https://github.com/nordigen/nordigen-php)
