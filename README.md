@@ -65,7 +65,7 @@ Create `institutionSelector` instance and pass following parameters:
 * `institution-modal-content` - div where all banks will be appended
 * configs object
 
-```javascript
+```js
 // Pass your redirect link after user has been authorized in institution
 const config = {
     // Redirect URL that is being used when modal is being closed.
@@ -105,23 +105,15 @@ To use internalization pass query parameter `lang` with appropriate language in 
 If custom redirect flow is required with `institution_id` in URL
 
 ```js
-const container = document.querySelector(".institution-container");
-const observer = new MutationObserver((event) => {
-    const institutions = Array.from(document.querySelectorAll('.ob-list-institution > a'));
-    institutions.forEach((institution) => {
-        institution.addEventListener("click", (e) => {
-            e.preventDefault();
-            const aspspId = e.currentTarget.getAttribute('data-institution');
-            // custom redirect
-            window.location = `http://example.com/${aspspId}`;
-        })
-    })
-  });
+const institutionList = Array.from(document.querySelectorAll('.ob-list-institution > a'));
 
-const conf = {
-    childList: true
-};
-observer.observe(container, conf);
+institutionList.forEach((institution) => {
+    institution.addEventListener('click', (e) => {
+        e.preventDefault()
+        const institutionId = institution.getAttribute('data-institution');
+        window.location.href = `https://example.com/${institutionId}`
+    });
+});
 ```
 
 ## Development
