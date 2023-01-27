@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.5.3] - 2023-01-30
+    - Make card elements smaller
+    - Decrease High of the container
+    - Upgrade packages
+
 ## [1.5.2] - 2022-12-20
     - Minify js
     - Add Husky pre-commit hook to run prettier and minify css/js

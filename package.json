@@ -1,6 +1,6 @@
 {
     "name": "nordigen-bank-ui",
-    "version": "1.5.2",
+    "version": "1.5.3",
     "description": "Nordigen Bank UI selector",
     "main": "package/src/selector.js",
     "module": "package/src/selector.js",
