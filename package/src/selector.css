@@ -96,7 +96,7 @@ body {
 }
 
 .institution-search-bx-body {
-    max-height: 49vh;
+    max-height: 48vh;
     overflow-y: auto;
 }
 
@@ -201,7 +201,7 @@ body {
     border: 1px solid var(--primary-cta-200);
     margin: 0 1rem 1.6rem 0;
     border-radius: 5px;
-    width: 24rem;
+    width: 23rem;
 }
 
 .ob-institution a {
