@@ -44,7 +44,7 @@ const exampleList = [
         "countries": [
             "GB"
         ],
-        "logo": "https://cdn.nordigen.com/ais/ABNAMRO_FTSBDEFAXXX.png"
+        "logo": "https://cdn-logos.gocardless.com/ais/ABNAMRO_FTSBDEFAXXX.png"
     },
     {
         "id": "BBVAUK_BBVAGB2L",
@@ -54,7 +54,7 @@ const exampleList = [
         "countries": [
             "GB"
         ],
-        "logo": "https://cdn.nordigen.com/ais/BBVABE_BBVABEBB.png"
+        "logo": "https://cdn-logos.gocardless.com/ais/BBVABE_BBVABEBB.png"
     },
 ];
 ```
@@ -73,7 +73,7 @@ const config = {
     // Text that will be displayed on the left side under the logo. Text is limited to 100 characters, and rest will be truncated.
     text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mavdvd",
     // Logo URL that will be shown below the modal form.
-    logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg',
+    logoUrl: 'https://cdn-logos.gocardless.com/ais/Nordigen_Logo_Black.svg',
     // Will display country list with corresponding institutions. When `countryFilter` is set to `false`, only list of institutions will be shown.
     countryFilter: false,
     // style configs
